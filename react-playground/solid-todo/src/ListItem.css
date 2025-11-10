@@ -1,0 +1,18 @@
+.itemContainer {
+    width: 40rem;
+    height: 2rem;
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    justify-content: left;
+}
+
+.itemContainer > div {
+    font-size: 20px;
+    align-content: center;
+    margin: 0.1rem;
+}
+
+.itemText {
+    overflow-x: hidden;
+}
+
