@@ -1,0 +1,45 @@
+services:
+  root_api:
+  # docker run --rm -it -p 4200:4200 -v ./src:/app/src solid-urls-root_api
+    build:
+      context: ./client/
+      dockerfile: ./Dockerfile.dev
+    networks:
+      - frontend
+    ports:
+      - "4200:4200"
+    working_dir: /app
+    volumes:
+      - ./client/src:/app/src
+    environment:
+      - NODE_ENV=development
+    entrypoint: 
+      - npm
+      - run
+      - start
+  read_api:
+    image: api_container
+    build:
+      context: ./platform/
+      dockerfile: ./Dockerfile.dev
+    networks:
+      - frontend
+    ports:
+      - "8081:8080"
+    # volumes:
+    #   - ./platform/src:/app/src
+    working_dir: /app
+    entrypoint: 
+      - java
+      - -jar
+      - build/libs/platform-0.0.1.jar
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_DB: mydatabase
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+
+networks:
+  frontend:
+  backend:
