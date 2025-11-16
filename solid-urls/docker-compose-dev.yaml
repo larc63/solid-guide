@@ -21,18 +21,18 @@ services:
     image: api_container
     build:
       context: ./platform/
-      dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile
+      target: development
     networks:
       - frontend
     ports:
       - "8081:8080"
-    # volumes:
-    #   - ./platform/src:/app/src
+    volumes:
+      - ./platform/src:/app/src
     working_dir: /app
     entrypoint: 
-      - java
-      - -jar
-      - build/libs/platform-0.0.1.jar
+      - sh
+      - start.sh  
   # db:
   #   image: postgres:latest
   #   environment:
