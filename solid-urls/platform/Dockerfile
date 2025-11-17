@@ -28,9 +28,10 @@ ENTRYPOINT ["./start.sh"]
 # ============================================
 # Stage 3: Test - Run unit tests
 # ============================================
-# FROM base AS test
-# COPY src ./src
-# CMD ["./mvnw", "test"]
+FROM base AS test
+COPY src ./src
+
+ENTRYPOINT ["./gradlew", "test", "--continuous"]
 
 
 # ============================================
