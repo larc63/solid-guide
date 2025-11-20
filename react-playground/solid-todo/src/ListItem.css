@@ -1,4 +1,5 @@
 .itemContainer {
+    position: absolute;
     width: 40rem;
     height: 2rem;
     background-color: lightgoldenrodyellow;
@@ -12,7 +13,15 @@
     margin: 0.1rem;
 }
 
+.itemHandle:hover {
+    cursor: grab;
+}
+
 .itemText {
     overflow-x: hidden;
 }
 
+.itemContainerGrabbing {
+    cursor: grabbing;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
