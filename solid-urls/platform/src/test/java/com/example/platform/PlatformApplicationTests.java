@@ -18,7 +18,7 @@ class PlatformApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    private static final String EXPECTED_REDIRECT_URL = "https://www.google.com";
+    private static final String EXPECTED_REDIRECT_URL = "https://www.lavacahacemu.com";
 
     @Test
     void contextLoads() {

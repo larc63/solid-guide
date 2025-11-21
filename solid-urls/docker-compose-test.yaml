@@ -1,5 +1,7 @@
 services:
   root_api:
+    image: root_api
+    tty: true
   # docker run --rm -it -p 4200:4200 -v ./src:/app/src solid-urls-root_api
     build:
       context: ./client/
@@ -13,12 +15,13 @@ services:
       - ./client/src:/app/src
     environment:
       - NODE_ENV=development
-    entrypoint: 
+    entrypoint:
       - npm
       - run
       - start
   read_api:
     image: api_container
+    tty: true
     build:
       context: ./platform/
       dockerfile: ./Dockerfile
@@ -28,10 +31,10 @@ services:
     volumes:
       - ./platform/src:/app/src
     working_dir: /app
-    entrypoint: 
+    entrypoint:
       - ./gradlew
       - test
-      - --continuous 
+      - --continuous
   # db:
   #   image: postgres:latest
   #   environment:

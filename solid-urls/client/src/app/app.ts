@@ -1,19 +1,24 @@
 import { Component, signal } from '@angular/core';
-// import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+
+
+const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('client');
-
-  url = signal('');
+  url = new FormControl('', [
+    Validators.required,
+    Validators.pattern(urlRegex)
+  ]);
+  urlValue = signal('');
 
   handleSubmit() {
-    console.log(`submitting url: ${this.url()}`);
+    console.log(`url: ${this.urlValue()} is ${this.url.invalid? 'invalid': 'valid'}`);
   }
 }

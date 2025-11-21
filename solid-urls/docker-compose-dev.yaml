@@ -1,9 +1,12 @@
 services:
   root_api:
+    image: root_api
+    tty: true
   # docker run --rm -it -p 4200:4200 -v ./src:/app/src solid-urls-root_api
     build:
       context: ./client/
-      dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile
+      target: development
     networks:
       - frontend
     ports:
@@ -13,33 +16,50 @@ services:
       - ./client/src:/app/src
     environment:
       - NODE_ENV=development
-    entrypoint: 
+    entrypoint:
       - npm
       - run
       - start
   read_api:
     image: api_container
+    tty: true
     build:
       context: ./platform/
       dockerfile: ./Dockerfile
       target: development
     networks:
       - frontend
+      - backend
     ports:
       - "8081:8080"
     volumes:
       - ./platform/src:/app/src
     working_dir: /app
-    entrypoint: 
+    entrypoint:
       - sh
-      - start.sh  
+      - start.sh
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
   # db:
   #   image: postgres:latest
   #   environment:
   #     POSTGRES_DB: mydatabase
   #     POSTGRES_USER: user
   #     POSTGRES_PASSWORD: password
-
+volumes:
+  postgres-data:
+  
 networks:
   frontend:
   backend:
