@@ -1,9 +1,10 @@
 {
-  "name": "expressme",
-  "version": "0.0.0",
+  "name": "solid-todo-api",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "seq": "sequelize-cli model:generate --name Idea --attributes subject:string,category:string && sequelizecli model:generate --name Content --attributes idea_id:integer,content:string,audio:string"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
@@ -11,6 +12,13 @@
     "express": "~5.1.0",
     "http-errors": "~2.0.1",
     "jade": "~1.11.0",
-    "morgan": "~1.10.1"
+    "morgan": "~1.10.1",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
