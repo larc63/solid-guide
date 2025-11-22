@@ -1,13 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const db = require('./lib/db');
 
-var indexRouter = require('./routes/index');
-var notesRouter = require('./routes/notes');
 
-var app = express();
+
+const indexRouter = require('./routes/index');
+const notesRouter = require('./routes/notes');
+const initRouter = require('./routes/initialize')
+
+const app = express();
+
+// // database setup
+db.init();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', notesRouter);
+app.use('/initialize', initRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,6 +44,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received, closing server...');
+  await sequelize.close();
+  process.exit(0);
 });
 
 module.exports = app;
