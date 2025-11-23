@@ -22,10 +22,10 @@ module.exports = function(sequelize, DataTypes) {
     list_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'todolists',
-        key: 'list_id'
-      }
+      // references: {
+      //   model: 'todolists',
+      //   key: 'list_id'
+      // }
     }
   }, {
     sequelize,
