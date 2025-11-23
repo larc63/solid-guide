@@ -1,5 +1,5 @@
-import React, { 
-    useState, 
+import React, {
+    useState,
     useRef,
     useCallback,
     useEffect,
@@ -9,15 +9,17 @@ import './ListItem.css'
 
 
 
-type ItemMoveFunctionType = (rank: number, x: number, y:number) => void;
+type ItemMoveFunctionType = (rank: number, x: number, y: number) => void;
 
 type ListItemPropsType = {
     onItemMove: ItemMoveFunctionType,
+    text: string,
     rank: number
 }
 
 function ListItem(props: ListItemPropsType) {
     // Set states for dragging on mousedown for the "handle"
+    console.log('creating position state hook');
     const [position, setPosition] = useState({ x: 0, y: 0 });
     // const [isDragging, setIsDragging] = useState(false);
     const isDragging = useRef(false);
@@ -37,13 +39,16 @@ function ListItem(props: ListItemPropsType) {
         // Calculate the offset (where the mouse is clicked *inside* the element)
         // This prevents the element from jumping when you start dragging
         offset.current = {
-            x: e.clientX - position.x,
-            y: e.clientY - position.y,
+            x: e.clientX - offset.current.x,
+            y: e.clientY - offset.current.y,
         };
+        // console.log(`MouseDown event: ${e.clientX}, ${e.clientY}`);
+        // console.log(`MouseDown offset: ${offset.current.x}, ${offset.current.y}`);
+        // console.log(`MouseDown position: ${position.x}, ${position.y}`);
         // Change cursor and focus style
         (e.currentTarget as HTMLElement)?.classList.add('itemContainerGrabbing');
 
-        console.log(`before exiting hanlder ${isDragging.current}`);
+        console.log(`before exiting handler ${isDragging.current}`);
         setTimeout(() => {
             // Attach the global mouse move/up listeners
             console.log(`in settimeout ${isDragging.current}`);
@@ -55,18 +60,16 @@ function ListItem(props: ListItemPropsType) {
     const handleMouseMove = useCallback((e: Event) => {
         if (!isDragging.current) {
             console.log('isDragging is false');
-            return; 
+            return;
         }
         const me = e as MouseEvent;
         // Calculate the new position based on mouse movement and initial offset
-        const rect = itemContainerRef.current?.getBoundingClientRect();
-        let newX, newY
-        if(rect){
-            newX = rect.left - offset.current.x;
-            newY = rect.top - offset.current.y;
-        }
-        // let newX = me.clientX - offset.current.x;
-        // let newY = me.clientY - offset.current.y;
+
+        // console.log(`MouseMove event: ${me.clientX}, ${me.clientY}`);
+        // console.log(`MouseMove offset: ${offset.current.x}, ${offset.current.y}`);
+        // console.log(`MouseMove position: ${position.x}, ${position.y}`);
+        let newX = me.clientX - offset.current.x;
+        let newY = me.clientY - offset.current.y;
 
         // // **Boundary Check (Optional but recommended):**
         // if (containerRef.current) {
@@ -83,19 +86,22 @@ function ListItem(props: ListItemPropsType) {
         // }
 
         // Update state to trigger re-render and move the element
-        setPosition({ x: newX, y: newY });
-        console.log(`set position to ${position}`);
+        
+        setPosition(() => ({
+            x: newX,
+            y: newY
+        }));
     }, [position.x, position.y]);
 
     const handleMouseUp = useCallback((e: Event) => {
 
-        isDragging.current = false;// setIsDragging(false);
-        
+        isDragging.current = false;
+
         const me = e as MouseEvent;
         // Calculate the new position based on mouse movement and initial offset
         let newX = me.clientX - offset.current.x;
         let newY = me.clientY - offset.current.y;
-    
+
         // // Restore style
         itemContainerRef.current?.classList.remove('itemContainerGrabbing');
 
@@ -104,28 +110,31 @@ function ListItem(props: ListItemPropsType) {
         document.removeEventListener('mouseup', handleMouseUp);
 
         props.onItemMove(props.rank, newX, newY);
+        setPosition({x: newX, y: newY});
     }, [handleMouseMove]);
 
     useEffect(() => {
-        console.log(`isDragging = ${isDragging.current}`);
+        // console.log(`isDragging = ${isDragging.current}`);
+        // console.log(`useEffect new position: ${position.x}, ${position.y}`);
     }, [isDragging.current]);
 
     return (
-            <div className="itemContainer" 
-                style={{
-                    left: position.x + 'px',
-                    top: position.y + 'px',
-                }}  
-            >
-                <div className="itemHandle" onMouseDown={handleMouseDown} >
-                    |||
-                </div>
-                <div className="itemCheckbox">
-                    <input type="checkbox" name="checked" id="" />
-                </div>
-                <div className="itemText">Start writing to create a new TODO item</div>
+        <div className="itemContainer"
+            style={{
+                left: position.x + 'px',
+                top: position.y + 'px',
+            }}
+        >
+            <div className="itemHandle" onMouseDown={handleMouseDown} >
+            {/* <div className="itemHandle"> */}
+                |||
             </div>
-        )
+            <div className="itemCheckbox">
+                <input type="checkbox" name="checked" id="" />
+            </div>
+            <div className="itemText">{props.text}</div>
+        </div>
+    )
 }
 
 export default ListItem;
