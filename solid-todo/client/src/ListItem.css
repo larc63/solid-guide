@@ -14,12 +14,15 @@
     margin: 0.1rem;
 }
 
-.itemHandle:hover {
+/* .itemHandle:hover {
     cursor: grab;
-}
+} */
 
 .itemText {
     overflow-x: hidden;
+    border-style: none;
+    width: 25rem;
+    background-color: inherit;
 }
 
 .itemContainerGrabbing {

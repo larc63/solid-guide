@@ -1,64 +1,70 @@
-import { useState, useEffect, useRef } from "react";
+import { Component } from "react";
+import TODOListController from "./controllers/TODOListController";
 import ListItem from "./ListItem";
-
 import './TODOList.css';
 
-const API_URL = 'http://localhost:3002'
 
-const ENDPOINTS = {
-    getNote: `${API_URL}/notes`
-}
+class TODOList extends Component {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            list_id: 0,
+            title: '',
+            items: []
+        };
+        this.updateData = this.updateData.bind(this);
+    }
 
-type ListItemType = {
-    text: string,
-    rank: number
-}
+    async updateData(newItem: any) {
+        const newNote = await TODOListController.createNote(this.state.list_id, newItem.text);
+        if (newNote) {
+            this.setState({
+                items: [...(this.state.items), newNote]
+            });
+        }
+    }
 
-function TODOList() {
-    const handleItemMove = (rank: number, x: number, y: number) => {
+    handleItemMove(rank: number, x: number, y: number) {
         console.log(`item ${rank} moved to x/y ${x}, ${y}`);
     }
-    const listRef = useRef(null);
-    const [title, setTitle] = useState('List Title');
-    const [items, setItems] = useState<[ListItemType]>([{ text: '', rank: 0}]);
+    async componentDidMount() {
+        const data = await TODOListController.getNotes();
+        // console.log(data);
+        this.setState({ title: data.title });
+        // console.log(`list_id= ${data.list_id}`);
+        this.setState({ list_id: data.list_id });
+        this.setState({ items: data.items });
+    };
 
-    const fetchNote = async () => {
-        try {
-            const response = await fetch(ENDPOINTS.getNote);
-
-            // Check if the request was successful (status in the 200-299 range)
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            // Extract the response body content as JSON
-            const data = await response.json();
-            console.log(data);
-            setTitle(() => data.title);
-            setItems(() => data.items);
-        } catch (error: any) {
-            console.error('Fetch error:', error.message);
-        }
-
-
-    }
-
-    // componentDidMount
-    useEffect(() => {
-        fetchNote();
-    }, []);
-
-    return (<div ref={listRef}>
-        <div className="listContainer">
-            <div className="listTitle">{title}</div>
-
-            <div>
-            {items.map((item) => (
-                <ListItem onItemMove={handleItemMove} rank={item.rank} text={item.text} />
-            ))}
+    render() {
+        console.log(`RENDERING ${this.state.items.length} items`);
+        return (
+            //ref={listRef}
+            <div className="listContainer">
+                <div className="listTitle">{this.state.title}</div>
+                <div>
+                    {this.state.items.map((item) => (
+                        <ListItem
+                            onItemMove={this.handleItemMove}
+                            onUpdateData={this.updateData}
+                            key={item.item_id}
+                            list_id={this.state.list_id}
+                            item_id={item.item_id}
+                            rank={item.rank}
+                            text={item.text} />
+                    ))}
+                    <ListItem
+                        onItemMove={this.handleItemMove}
+                        onUpdateData={this.updateData}
+                        key={0}
+                        list_id={this.state.list_id}
+                        item_id={0}
+                        rank={0}
+                        text={''} />
+                </div>
             </div>
-        </div>
-    </div>)
+        )
+    }
 }
 
 export default TODOList;

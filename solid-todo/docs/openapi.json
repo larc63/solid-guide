@@ -213,7 +213,11 @@
       "com.solid.todo.model.ListItem": {
         "additionalProperties": false,
         "properties": {
-          "id": {
+          "item_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "owner": {
             "type": "integer",
             "format": "int32"
           },

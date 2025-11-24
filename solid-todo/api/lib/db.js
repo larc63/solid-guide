@@ -28,7 +28,7 @@ class Database {
             newItem = await Database.models.listitems.create({
                 owner_id: 1,        // Required
                 text: 'bananas',
-                rank: 1,
+                rank: 2,
                 list_id: newList.list_id          // Required (must reference existing list in todolists table)
             });
             console.log(`Created list ${newItem.item_id} item successfully!`);
