@@ -4,7 +4,8 @@ const API_URL = 'http://localhost:3002'
 
 const ENDPOINTS = {
     getNote: `${API_URL}/notes`,
-    createItem: `${API_URL}/items`
+    createItem: `${API_URL}/items`,
+    toggleListState: `${API_URL}/items/toggle`
 }
 
 class TODOListController {
@@ -94,6 +95,27 @@ class TODOListController {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(putData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+        }
+    }
+
+    static async toggleListState(item_id: number) {
+        try {
+            const url = `${ENDPOINTS.toggleListState}/${item_id}`
+            console.log(`calling ${url}`);
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                }
             });
 
             // Check if the request was successful (status in the 200-299 range)

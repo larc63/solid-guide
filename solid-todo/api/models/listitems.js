@@ -1,15 +1,42 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('listitems', {
+const { Model, DataTypes } = require('sequelize');
+
+class ListItem extends Model {
+  // Custom instance methods
+  async toggleState() {
+    this.state = !this.state;
+    return await this.save();
+  }
+  
+  async moveToRank(newRank) {
+    this.rank = newRank;
+    return await this.save();
+  }
+  
+  // Custom static methods
+  static async getCompletedItems(listId) {
+    return await this.findAll({
+      where: { 
+        list_id: listId,
+        state: true 
+      },
+      order: [['rank', 'ASC']]
+    });
+  }
+  
+  static async getMaxRank(listId) {
+    return await this.max('rank', {
+      where: { list_id: listId }
+    }) || 0;
+  }
+}
+
+module.exports = (sequelize) => {
+  ListItem.init({
     item_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
-    },
-    owner_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     },
     text: {
       type: DataTypes.TEXT,
@@ -19,18 +46,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    done: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false // unchecked/incomplete by default
+    },
     list_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      // references: {
-      //   model: 'todolists',
-      //   key: 'list_id'
-      // }
+      allowNull: false
     }
   }, {
     sequelize,
     tableName: 'listitems',
     schema: 'public',
+    modelName: 'ListItem',
     timestamps: false,
     indexes: [
       {
@@ -42,4 +71,6 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+  
+  return ListItem;
 };

@@ -63,8 +63,8 @@ class TODOList extends Component {
                         <ListItem
                             onItemMove={this.handleItemMove}
                             onUpdateData={this.updateData}
+                            done={item.done}
                             key={item.item_id}
-                            list_id={this.state.list_id}
                             item_id={item.item_id}
                             rank={item.rank}
                             text={item.text} />
@@ -72,8 +72,8 @@ class TODOList extends Component {
                     <ListItem
                         onItemMove={this.handleItemMove}
                         onUpdateData={this.updateData}
+                        done={false}
                         key={0}
-                        list_id={this.state.list_id}
                         item_id={0}
                         rank={0}
                         text={''} />

@@ -19,7 +19,6 @@ class ListItemsController {
     console.log(`found max Rank = ${maxRank}`);
     try {
       let item = await db.models.listitems.create({
-        owner_id: listId,        // Required
         text: text,
         rank: maxRank + 1,
         list_id: listId          // Required (must reference existing list in todolists table)
@@ -46,10 +45,29 @@ class ListItemsController {
     }
   }
 
-  static async deleteNoteItem(itemId, text) {
+  static async deleteNoteItem(itemId) {
     try {
       let item = await db.models.listitems.destroy(
         { where: { item_id: itemId } });
+      console.log(`Updated list item: ${JSON.stringify(item)}`);
+      return item;
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
+  }
+
+  static async toggleState(itemId) {
+    try {
+      let item = await db.models.listitems.update(
+        {
+          done: db.sequelize.literal('NOT "done"')
+        },
+        {
+          where: {
+            item_id: itemId
+          }
+        });
       console.log(`Updated list item: ${JSON.stringify(item)}`);
       return item;
     } catch (error) {
@@ -92,6 +110,18 @@ router.delete('/', async (req, res) => {
     await ListItemsController.deleteNoteItem(item_id);
     console.log(`deleted item: ${JSON.stringify(item_id)}`);
     res.write("ok");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.put('/toggle/:item_id', async (req, res) => {
+  try {
+    console.log(`toggle put method received data: ${req.params.item_id}`);
+    const item = await ListItemsController.toggleState(req.params.item_id);
+    console.log(`updated item: ${JSON.stringify(item)}`);
+    res.json(item);
+    // res.write("ok");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

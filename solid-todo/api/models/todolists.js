@@ -1,6 +1,20 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('todolists', {
+const { Model, DataTypes } = require('sequelize');
+
+class TodoList extends Model {
+  // You can add custom instance methods here
+  async getItems() {
+    // Assuming you have a ListItems model with associations
+    return await this.getListitems();
+  }
+  
+  // Custom class methods
+  static async findByTitle(title) {
+    return await this.findOne({ where: { title } });
+  }
+}
+
+module.exports = (sequelize) => {
+  TodoList.init({
     list_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -15,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 'todolists',
     schema: 'public',
+    modelName: 'TodoList', // Important: add modelName
     timestamps: false,
     indexes: [
       {
@@ -26,4 +41,6 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+  
+  return TodoList;
 };
