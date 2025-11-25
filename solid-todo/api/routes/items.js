@@ -31,17 +31,67 @@ class ListItemsController {
       return null;
     }
   }
+
+  static async updateNoteItem(itemId, text) {
+    try {
+      let item = await db.models.listitems.update(
+        { text: text },
+        { where: { item_id: itemId } }
+      );
+      console.log(`Updated list item: ${JSON.stringify(item)}`);
+      return item;
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
+  }
+
+  static async deleteNoteItem(itemId, text) {
+    try {
+      let item = await db.models.listitems.destroy(
+        { where: { item_id: itemId } });
+      console.log(`Updated list item: ${JSON.stringify(item)}`);
+      return item;
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
+  }
 }
 
-/* GET notes for user listing. */
 router.post('/', async (req, res) => {
   try {
-    const {owner, text} = req.body;
+    const { owner, text } = req.body;
     console.log(`post method received data: ${owner}, ${text}`);
     const item = await ListItemsController.createNoteItem(owner, text);
     console.log(`Created item: ${JSON.stringify(item)}`);
     res.json(item);
     // res.write("ok");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.put('/', async (req, res) => {
+  try {
+    const { item_id, text } = req.body;
+    console.log(`put method received data: ${item_id}, ${text}`);
+    const item = await ListItemsController.updateNoteItem(item_id, text);
+    console.log(`updated item: ${JSON.stringify(item)}`);
+    res.json(item);
+    // res.write("ok");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete('/', async (req, res) => {
+  try {
+    const { item_id } = req.body;
+    console.log(`delete method received data: ${item_id}`);
+    await ListItemsController.deleteNoteItem(item_id);
+    console.log(`deleted item: ${JSON.stringify(item_id)}`);
+    res.write("ok");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,9 +1,8 @@
-import React, {
-    useState,
+import {
+    Component,
+    type ReactNode,
 } from "react";
 import './ListItem.css'
-
-
 
 type ItemMoveFunctionType = (rank: number, x: number, y: number) => void;
 type UpdateDataFunctionType = (newData: any) => void;
@@ -17,53 +16,80 @@ type ListItemPropsType = {
     rank: number
 }
 
-function ListItem(props: ListItemPropsType) {
-    let item_id = props.item_id;
-    const [text, setText] = useState(props.text);
+class ListItem extends Component {
 
-    const handleTextChange = e => {
-        setText(() => e.target.value);
+    constructor(props: ListItemPropsType) {
+        super(props);
+        this.state = {
+            text: props.text
+        };
     }
-    const handleKeyDown = e => {
+
+    handleTextChange = e => {
+        this.setState({ text: e.target.value });
+    }
+
+    handleKeyDown = e => {
         if (e.key === 'Enter') {
-            commitTextChange();
+            this.commitTextChange();
+            e.target.blur();
         }
     }
 
-    const commitTextChange = async () => {
-        const trimmedText = text.trim();
-        if (trimmedText.length > 0) {
-            if (props.item_id == 0) {
+    commitTextChange(): void {
+        const trimmedText = this.state.text?.trim();
+        if (trimmedText?.length > 0) {
+            let action;
+            if (this.props.item_id == 0) {
                 // save as new item
-                console.log(`Will save new row to list ${props.list_id} with ${trimmedText} to back end`);
-                props.onUpdateData({
-                    text: trimmedText
-                });
+                console.log(`Will save new row to list ${this.props.list_id} with ${trimmedText} to back end`);
+                action = 'create';
+            } else {
+                action = 'update';
+                // save change to existing item_id
+                console.log(`Will save ${trimmedText} to item_id: ${this.props.item_id} in back end`);
             }
-            setText(() => props.text);
-        } else {
-            // save change to existing item_id
-            console.log(`Will save ${trimmedText} to item_id: ${props.item_id} in back end`);
+            this.props.onUpdateData({
+                action: action,
+                text: trimmedText,
+                item_id: this.props.item_id
+            });
+
+            if (this.props.item_id == 0) {
+                this.setState({ text: this.props.text });
+            }
         }
     }
 
-    return (
-        <div className="itemContainer">
-            <div className="itemHandle">
-                {/* {item_id} */}
-                |||
+    deleteItem = () => {
+        this.props.onUpdateData({
+            action: 'delete',
+            item_id: this.props.item_id
+        });
+    }
+
+    render(): ReactNode {
+        return (
+            <div className="itemContainer">
+                <div className="itemHandle">
+                    {/* {this.props.item_id} */}
+                    |||
+                </div>
+                <div className="itemCheckbox">
+                    <input type="checkbox" name="checked" id="" />
+                </div>
+                <input className="itemText"
+                    onChange={this.handleTextChange}
+                    onBlur={this.commitTextChange}
+                    onKeyDown={this.handleKeyDown}
+                    placeholder="Enter new item here"
+                    value={this.state.text} />
+                {this.props.item_id != 0 ? (
+                    <div className="itemDelete" onClick={this.deleteItem}> &times;</div>
+                ) : (<></>)}
             </div>
-            <div className="itemCheckbox">
-                <input type="checkbox" name="checked" id="" />
-            </div>
-            <input className="itemText"
-                onChange={handleTextChange}
-                onBlur={commitTextChange}
-                onKeyDown={handleKeyDown}
-                placeholder="Enter new item here"
-                value={text}></input>
-        </div>
-    )
+        )
+    }
 }
 
 export default ListItem;

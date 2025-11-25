@@ -16,12 +16,28 @@ class TODOList extends Component {
     }
 
     async updateData(newItem: any) {
-        const newNote = await TODOListController.createNote(this.state.list_id, newItem.text);
-        if (newNote) {
-            this.setState({
-                items: [...(this.state.items), newNote]
-            });
+
+        switch (newItem.action) {
+            case 'create':
+                const newNote = await TODOListController.createNote(this.state.list_id, newItem.text);
+                if (newNote) {
+                    this.setState({
+                        items: [...(this.state.items), newNote]
+                    });
+                }
+                break;
+            case 'update':
+                const updateResult = await TODOListController.updateNote(newItem.item_id, newItem.text);
+                break;
+            case 'delete':
+                const deleteResult = await TODOListController.deleteNote(newItem.item_id);
+                const filteredItems = this.state.items.filter(i => i.item_id != newItem.item_id);
+                this.setState({
+                    items: [...filteredItems]
+                });
+                break;
         }
+
     }
 
     handleItemMove(rank: number, x: number, y: number) {
@@ -37,7 +53,7 @@ class TODOList extends Component {
     };
 
     render() {
-        console.log(`RENDERING ${this.state.items.length} items`);
+        // console.log(`RENDERING ${this.state.items.length} items`);
         return (
             //ref={listRef}
             <div className="listContainer">

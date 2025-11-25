@@ -53,6 +53,58 @@ class TODOListController {
             return null;
         }
     }
+    static async updateNote(item_id: number, text: string) {
+        try {
+            const putData = {
+                text: text,
+                item_id: item_id
+            }
+            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(ENDPOINTS.createItem, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(putData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Extract the response body content as JSON
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+            return null;
+        }
+    }
+
+    static async deleteNote(item_id: number) {
+        try {
+            const putData = {
+                item_id: item_id
+            }
+            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(ENDPOINTS.createItem, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(putData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+        }
+    }
 }
 
 export default TODOListController;
