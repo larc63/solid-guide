@@ -1,47 +1,43 @@
 import {
+    ChangeEvent,
+    KeyboardEvent,
     Component,
     type ReactNode,
 } from "react";
 import './ListItem.css'
+
+import {ListItemProps, ListItemState} from './types';
 import TODOListController from "./controllers/TODOListController";
 
-type ItemMoveFunctionType = (rank: number, x: number, y: number) => void;
-type UpdateDataFunctionType = (newData: any) => void;
-
-type ListItemPropsType = {
-    onItemMove: ItemMoveFunctionType,
-    onUpdateData: UpdateDataFunctionType,
-    item_id: number,
-    done: boolean,
-    text: string,
-    rank: number
-}
-
-class ListItem extends Component {
-
-    constructor(props: ListItemPropsType) {
+class ListItem extends Component<ListItemProps> {
+    state: ListItemState = {
+        text: ''
+    };
+    constructor(props: ListItemProps) {
         super(props);
-        this.state = {
-            text: props.text
-        };
+    }
+    
+    componentDidMount(): void {
+        this.setState({text: this.props.text});
     }
 
     handleCheck = () => {
         TODOListController.toggleListState(this.props.item_id);
     };
 
-    handleTextChange = e => {
+    handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({ text: e.target.value });
     }
 
-    handleKeyDown = e => {
+    handleKeyDown = (e:KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            this.commitTextChange();
-            e.target.blur();
+            // this.commitTextChange();
+            const target = e.target as HTMLElement;
+            target.blur();
         }
     }
 
-    commitTextChange(): void {
+    commitTextChange = () => {
         const trimmedText = this.state.text?.trim();
         if (trimmedText?.length > 0) {
             let action;

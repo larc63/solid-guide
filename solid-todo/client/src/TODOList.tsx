@@ -1,17 +1,17 @@
 import { Component } from "react";
+import { TODOListState } from "./types";
 import TODOListController from "./controllers/TODOListController";
 import ListItem from "./ListItem";
 import './TODOList.css';
 
-
 class TODOList extends Component {
+    state: TODOListState = {
+        list_id: 0,
+        title: '',
+        items: []
+    };
     constructor(props: any) {
         super(props);
-        this.state = {
-            list_id: 0,
-            title: '',
-            items: []
-        };
         this.updateData = this.updateData.bind(this);
     }
 
@@ -27,10 +27,10 @@ class TODOList extends Component {
                 }
                 break;
             case 'update':
-                const updateResult = await TODOListController.updateNote(newItem.item_id, newItem.text);
+                await TODOListController.updateNote(newItem.item_id, newItem.text);
                 break;
             case 'delete':
-                const deleteResult = await TODOListController.deleteNote(newItem.item_id);
+                await TODOListController.deleteNote(newItem.item_id);
                 const filteredItems = this.state.items.filter(i => i.item_id != newItem.item_id);
                 this.setState({
                     items: [...filteredItems]
