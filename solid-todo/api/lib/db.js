@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const initModels = require('../models/init-models');
+const ListItem = require('../models/listitems');
 
 const useMemoryDatabase = true;
 
@@ -24,18 +25,22 @@ class Database {
             });
             console.log(`Created list ${newItem.item_id} item successfully!`);
 
+            await newItem.toggleState();
+            
             newItem = await Database.models.listitems.create({
                 text: 'bananas',
                 rank: 2,
                 list_id: newList.list_id          // Required (must reference existing list in todolists table)
             });
-            console.log(`Created list ${newItem.item_id} item successfully!`);
 
+            console.log(`Created list ${newItem.item_id} item successfully!`);
+            // console.log(`Max Rank: ${await Database.models.listitems.getMaxRank(1)}`);
             // const items = await Database.models.listitems.findAll({
             //     where: { list_id: 1 }
             // });
             // console.log(`found ${items.length} items`);
             // console.log(JSON.stringify(items));
+
         } catch (error) {
             console.error('Unable to create list item:', error);
             console.error(error.message);

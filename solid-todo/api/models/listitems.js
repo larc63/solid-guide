@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class ListItem extends Model {
   // Custom instance methods
   async toggleState() {
-    this.state = !this.state;
+    this.done = !this.done;
     return await this.save();
   }
   
@@ -17,7 +17,7 @@ class ListItem extends Model {
     return await this.findAll({
       where: { 
         list_id: listId,
-        state: true 
+        done: true 
       },
       order: [['rank', 'ASC']]
     });

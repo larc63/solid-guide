@@ -2,16 +2,13 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../lib/db');
+const ListItem = require('../models/listitems');
 
 class ListItemsController {
   static async createNoteItem(listId, text) {
     let maxRank = 0;
     try {
-      maxRank = await db.models.listitems.max('rank', {
-        where: {
-          list_id: listId
-        }
-      });
+      maxRank = await db.models.listitems.getMaxRank(listId)
     } catch (error) {
       console.error(error.message);
       return null;
