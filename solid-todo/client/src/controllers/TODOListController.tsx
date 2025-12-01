@@ -1,0 +1,132 @@
+
+
+const API_URL = 'http://localhost:3002'
+
+const ENDPOINTS = {
+    getNote: `${API_URL}/notes`,
+    createItem: `${API_URL}/items`,
+    toggleListState: `${API_URL}/items/toggle`
+}
+
+class TODOListController {
+    static async getNotes() {
+        try {
+            const response = await fetch(ENDPOINTS.getNote);
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Extract the response body content as JSON
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+        }
+    }
+
+    static async createNote(owner: number, text: string) {
+        try {
+            const postData = {
+                text: text,
+                owner: owner
+            }
+            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(postData)}`);
+            const response = await fetch(ENDPOINTS.createItem, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(postData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Extract the response body content as JSON
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+            return null;
+        }
+    }
+    static async updateNote(item_id: number, text: string) {
+        try {
+            const putData = {
+                text: text,
+                item_id: item_id
+            }
+            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(ENDPOINTS.createItem, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(putData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Extract the response body content as JSON
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+            return null;
+        }
+    }
+
+    static async deleteNote(item_id: number) {
+        try {
+            const putData = {
+                item_id: item_id
+            }
+            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(ENDPOINTS.createItem, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(putData)
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+        }
+    }
+
+    static async toggleListState(item_id: number) {
+        try {
+            const url = `${ENDPOINTS.toggleListState}/${item_id}`
+            console.log(`calling ${url}`);
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+
+            // Check if the request was successful (status in the 200-299 range)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+        } catch (error: any) {
+            console.error('Fetch error:', error.message);
+        }
+    }
+}
+
+export default TODOListController;

@@ -1,0 +1,23 @@
+.listContainer{
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 25rem;
+    
+    padding: 1rem;
+
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 5px 5px #ccc;
+
+    background-color: lightgoldenrodyellow;
+}
+
+.listTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
