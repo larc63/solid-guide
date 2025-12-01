@@ -1,0 +1,26 @@
+[
+    {
+        "id": "44848c5a-e2a3-420e-aa87-b0b91d89bbb6",
+        "base": "Brown Rice",
+        "protein": "Salmon",
+        "dressings": ["Teriyaki"]
+    },
+    {
+        "id": "fd4d062e-de74-4fd9-bbcf-bb6d432250f5",
+        "base": "White Sushi Rice",
+        "protein": "Tuna",
+        "dressings": ["Sriracha"]
+    },
+    {
+        "id": "f2e7befb-3c7f-4407-9861-5a12689ff22c",
+        "base": "Polenta",
+        "protein": "Braised Pork",
+        "dressings": ["Brown Sauce", "Horseradish"]
+    },
+    {
+        "id": "d9820686-1ca0-4e06-8d49-7c840313f8fb",
+        "base": "Quinoa",
+        "protein": "Tofu",
+        "dressings": ["Hoisin", "Soy Sauce"]
+    }
+]

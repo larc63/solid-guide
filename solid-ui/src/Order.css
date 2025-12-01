@@ -1,0 +1,34 @@
+.itemContainer {
+    flex: auto;
+
+    width: 20rem;
+    
+    padding: 1rem;
+
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 5px 5px #ccc;
+
+    background-color: lightgoldenrodyellow;
+}
+
+.itemContainer > div {
+    /* font-size: 20px;
+    align-content: center;
+    margin: 0.1rem; */
+}
+
+/* .itemHandle:hover {
+    cursor: grab;
+} */
+
+.label{
+    color: darkgreen
+}
+
+.itemText {
+    color: darkred;
+    overflow-x: hidden;
+    border-style: none;
+}
