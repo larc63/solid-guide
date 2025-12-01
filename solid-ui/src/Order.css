@@ -1,9 +1,8 @@
 .itemContainer {
-    flex: auto;
-
-    width: 20rem;
+    flex-basis: 20rem;
+    flex-grow: 0;
     
-    padding: 1rem;
+    padding: 0.5rem;
 
     border-radius: 10px;
     border-width: 1px;
@@ -12,16 +11,6 @@
 
     background-color: lightgoldenrodyellow;
 }
-
-.itemContainer > div {
-    /* font-size: 20px;
-    align-content: center;
-    margin: 0.1rem; */
-}
-
-/* .itemHandle:hover {
-    cursor: grab;
-} */
 
 .label{
     color: darkgreen

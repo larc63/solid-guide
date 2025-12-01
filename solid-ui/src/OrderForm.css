@@ -1,0 +1,15 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+.label{
+    color: darkgreen
+}
+
+.itemText {
+    color: darkred;
+    overflow-x: hidden;
+    border-style: none;
+}

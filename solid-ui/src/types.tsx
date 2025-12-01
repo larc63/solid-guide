@@ -1,4 +1,14 @@
-// type ItemMoveFunctionType = (rank: number, x: number, y: number) => void;
+type AddOrderFunctionType = (base: string, protein: string, dressings: Array<string>) => void;
+
+export type OrderFormProps = {
+    addOrder: AddOrderFunctionType
+}
+
+export type OrderFormState = {
+    base: string,
+    protein: string,
+    dressings: Array<string>
+}
 
 export type OrderProps = {
     base: string,
