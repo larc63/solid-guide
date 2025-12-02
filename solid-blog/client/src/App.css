@@ -1,0 +1,8 @@
+.page-container {
+    margin: auto;
+    height: 100vh;
+    top: 0;
+    width: 50rem;
+    color: darkred;
+    background-color: blanchedalmond;
+}
