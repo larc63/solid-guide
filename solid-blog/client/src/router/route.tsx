@@ -8,7 +8,7 @@ export const ROUTES = [
     path: "/",
     element: <Home />,
   },
-//   {
+//   {x
 //     path: "/page1",
 //     element: <Page1 />,
 //   },

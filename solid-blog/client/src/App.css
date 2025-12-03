@@ -1,8 +1,82 @@
+:root {
+    --outer-border-radius: 1rem;
+    --main-color: darkred;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .page-container {
     margin: auto;
     height: 100vh;
     top: 0;
     width: 50rem;
-    color: darkred;
-    background-color: blanchedalmond;
+    color: var(--main-color);
+    background-color: snow;
+    border-radius: var(--outer-border-radius);
+}
+
+/* styles for the header */
+header.header {
+    position: relative;
+    height: 100px;
+    min-height: 100px;
+    border-top-left-radius: var(--outer-border-radius);
+    border-top-right-radius: var(--outer-border-radius);
+
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    background-image: linear-gradient(rgb(41, 41, 41, 0.2), rgb(46, 46, 46, 0.3));
+
+    div {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        margin: 1rem;
+
+        font-size: 40px;
+        text-shadow: 2px 2px rgb(41, 41, 41, 0.2);
+    }
+}
+
+.blog-list {
+    display: flex;
+    height: 250px;
+    min-height: 250px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.blog-card:hover {
+    /* background-color: red; */
+    box-shadow: 8px 8px #ccc;
+    box-shadow: 2px 2px 15px var(--main-color)
+}
+
+.blog-card {
+    flex-basis: 40%;
+    flex-grow: 0;
+    align-content: center;
+    width: 20rem;
+
+    display: grid;
+    place-items: center;
+
+    margin: 10px;
+    
+    height: 250px;
+    min-height: 250px;
+
+    border-color: var(--main-color);
+    border-width: 1px;
+    border-radius: var(--outer-border-radius);
+    border-style: solid;
+    box-shadow: 5px 5px #ccc;
+}
+
+.title {
+    text-decoration: none;
+    font-size: 30px;
 }

@@ -1,0 +1,17 @@
+import { Component } from 'react';
+
+import '../App.css'
+
+class Header extends Component {
+    render() {
+        return (
+            <header className="header">
+                <div >
+                    Solid Blog
+                </div>
+            </header>
+        )
+    }
+}
+
+export default Header;

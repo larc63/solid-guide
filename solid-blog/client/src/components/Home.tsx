@@ -1,10 +1,13 @@
 import {Component} from 'react';
+import Header from "./Header";
+import BlogList from "./BlogList";
 
 class Home extends Component {
     render(){
         return (
             <div>
-                This is a blog
+                <Header />
+                <BlogList />
             </div>
         )
     }
