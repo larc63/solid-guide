@@ -2,11 +2,10 @@ import { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { BlogListState } from "../types";
 import BlogCard from "./BlogCard";
-import testData from "../data/blogData.json";
+import BlogController from '../conrollers/BlogController';
 
 import '../App.css'
 
-const cardsPerPage = 6;
 class BlogList extends Component {
     state: BlogListState = {
         blogs: [],
@@ -14,7 +13,7 @@ class BlogList extends Component {
     }
     
     componentDidMount(): void {
-        this.setState({ blogs: testData.slice(0,cardsPerPage) });
+        this.setState({ blogs: BlogController.getPostList(this.state.page) });
     }
 
     render() {
