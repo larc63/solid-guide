@@ -1,0 +1,15 @@
+.headerContents {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+
+    & div {
+        background-color: lightcyan;
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        box-shadow: 5px 5px #ccc;
+    }
+}

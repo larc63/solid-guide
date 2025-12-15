@@ -37,7 +37,7 @@ class ListItem extends Component<ListItemProps> {
         }
     }
 
-    commitTextChange = () => {
+    commitTextChange = async () => {
         const trimmedText = this.state.text?.trim();
         if (trimmedText?.length > 0) {
             let action;
@@ -50,7 +50,7 @@ class ListItem extends Component<ListItemProps> {
                 // save change to existing item_id
                 console.log(`Will save ${trimmedText} to item_id: ${this.props.item_id}`);
             }
-            this.props.onUpdateData({
+            await this.props.onUpdateData({
                 action: action,
                 text: trimmedText,
                 item_id: this.props.item_id

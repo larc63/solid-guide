@@ -8,7 +8,7 @@ class App extends Component{
   render(): ReactNode {
     return (
       <>
-        <div>
+        <div className='appContainer'>
           <TODOList />
         </div>
       </>

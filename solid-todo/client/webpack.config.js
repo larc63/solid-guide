@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+
 
 module.exports = {
   mode: 'development',
@@ -10,7 +12,7 @@ module.exports = {
     clean: true
   },
   devServer: {
-    port: 5173, // Match Vite's default port
+    port: 5172, // Match Vite's default port
     hot: true,
     open: true,
     historyApiFallback: true,
@@ -46,6 +48,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
-    })
+    }),
+    new ModuleFederationPlugin({
+      name: 'todo',
+      filename: 'todo/remoteEntry.js',
+      exposes: {
+        './TODOList': './src/TODOList.tsx',
+      },
+      shared: { 
+        react: { eager: true, singleton: true }, 
+        "react-dom": { eager: true, singleton: true } }
+    }),
   ]
 };
