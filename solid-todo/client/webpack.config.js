@@ -12,12 +12,12 @@ module.exports = {
     clean: true
   },
   devServer: {
-    port: 5172, // Match Vite's default port
+    port: 6301,
     hot: true,
     open: true,
     historyApiFallback: true,
     headers: {
-      // 'Access-Control-Allow-Origin': '*' // CORS like Vite
+      // 'Access-Control-Allow-Origin': '*'
     }
   },
   module: {

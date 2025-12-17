@@ -1,0 +1,50 @@
+
+
+services:
+  dashboard:
+    image: dashboard
+    tty: true
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      target: runner
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "6300:6300"
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - todo_client
+  todo_client:
+    image: todo_client
+    tty: true
+    build:
+      context: ../solid-todo/client
+      dockerfile: ./Dockerfile
+      target: runner
+    ports:
+      - "6301:6301"
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - todo_api
+  todo_api:
+    image: todo_api
+    tty: true
+    build:
+      context: ../solid-todo/api
+      dockerfile: ./Dockerfile
+      target: runner
+    ports:
+      - "6299:6299"
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      - PORT=6299
+    entrypoint:
+      - npm
+      - run
+      - start
