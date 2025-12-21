@@ -1,19 +1,15 @@
-import { title } from "process";
 import { TODOListState } from "../types";
 
-
-const API_URL = window.TODO_API_HOST || 'http://localhost:6299';
-
-const ENDPOINTS = {
-    getNote: `${API_URL}/notes`,
-    createItem: `${API_URL}/items`,
-    toggleListState: `${API_URL}/items/toggle`
-}
-
 class RESTfulTODOListController {
+    static API_URL = window.TODO_API_HOST || 'http://localhost:6299';
+    static  ENDPOINTS = {
+    getNote: `${RESTfulTODOListController.API_URL}/notes`,
+    createItem: `${RESTfulTODOListController.API_URL}/items`,
+    toggleListState: `${RESTfulTODOListController.API_URL}/items/toggle`
+}
     static async getNotes() {
         try {
-            const response = await fetch(ENDPOINTS.getNote);
+            const response = await fetch(RESTfulTODOListController.ENDPOINTS.getNote);
 
             // Check if the request was successful (status in the 200-299 range)
             if (!response.ok) {
@@ -35,8 +31,8 @@ class RESTfulTODOListController {
                 text: text,
                 owner: owner
             }
-            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(postData)}`);
-            const response = await fetch(ENDPOINTS.createItem, {
+            console.log(`calling ${RESTfulTODOListController.ENDPOINTS.createItem} with ${JSON.stringify(postData)}`);
+            const response = await fetch(RESTfulTODOListController.ENDPOINTS.createItem, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -63,8 +59,8 @@ class RESTfulTODOListController {
                 text: text,
                 item_id: item_id
             }
-            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
-            const response = await fetch(ENDPOINTS.createItem, {
+            console.log(`calling ${RESTfulTODOListController.ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(RESTfulTODOListController.ENDPOINTS.createItem, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -91,8 +87,8 @@ class RESTfulTODOListController {
             const putData = {
                 item_id: item_id
             }
-            console.log(`calling ${ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
-            const response = await fetch(ENDPOINTS.createItem, {
+            console.log(`calling ${RESTfulTODOListController.ENDPOINTS.createItem} with ${JSON.stringify(putData)}`);
+            const response = await fetch(RESTfulTODOListController.ENDPOINTS.createItem, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
@@ -112,7 +108,7 @@ class RESTfulTODOListController {
 
     static async toggleListState(item_id: number) {
         try {
-            const url = `${ENDPOINTS.toggleListState}/${item_id}`
+            const url = `${RESTfulTODOListController.ENDPOINTS.toggleListState}/${item_id}`
             console.log(`calling ${url}`);
             const response = await fetch(url, {
                 method: 'PUT',
