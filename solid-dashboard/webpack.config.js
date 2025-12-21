@@ -2,10 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = (env, argv) => {
-    const isDevelopment = argv.mode === 'development';
-    let todourl = isDevelopment ? 
-                "todo@http://localhost:6301/todo/remoteEntry.js" :
-                "todo@https://larc63.github.io/solid-guide/dashboard/todo/todo/remoteEntry.js"
     return {
         mode: 'development',
         entry: './index.js',
@@ -47,9 +43,7 @@ module.exports = (env, argv) => {
             new ModuleFederationPlugin({
                 name: 'dashboard',
                 filename: 'remoteEntry.js',
-                remotes: {
-                    todo: todourl,
-                },
+                remotes: {},
                 shared: {
                     react: { singleton: true },
                     "react-dom": { singleton: true },

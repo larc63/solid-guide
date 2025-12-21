@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Header'
 // const TODOList = React.lazy(() => import("todo/TODOList"));
-import TODOList from 'todo/TODOList'
+// import TODOList from 'todo/TODOList'
+import TODOList from `${window.TODO_MODULE}`
 
 import './App.css'
 

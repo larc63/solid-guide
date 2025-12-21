@@ -2,7 +2,7 @@ import { title } from "process";
 import { TODOListState } from "../types";
 
 
-const API_URL = 'http://localhost:6299'
+const API_URL = window.TODO_API_HOST || 'http://localhost:6299';
 
 const ENDPOINTS = {
     getNote: `${API_URL}/notes`,

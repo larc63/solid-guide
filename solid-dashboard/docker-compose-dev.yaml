@@ -35,12 +35,15 @@ services:
       - NODE_ENV=development
     depends_on:
       - todo_api
+    networks:
+      - frontend
     entrypoint:
       - npm
       - run
       - dev
   todo_api:
     image: todo_api
+    hostname: todoapi
     tty: true
     build:
       context: ../solid-todo/api
@@ -59,7 +62,13 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=6299
+    networks:
+      - frontend
+      - todo-back-end
     entrypoint:
       - npm
       - run
       - start
+networks:
+  frontend:
+  todo-back-end:
