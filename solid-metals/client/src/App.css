@@ -1,0 +1,6 @@
+.appContainer {
+    width: 300px;
+
+    height: 100vh;
+    max-height: 100px;
+}
