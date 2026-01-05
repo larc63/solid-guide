@@ -1,5 +1,30 @@
-# Gold API
-## Get Quotes
+# Solid Metals
+## Frontend
+This widget will call a backend piece to retrieve spot prices for gold, silver and platinum and display them in tabular form, allowing the user to refresh on demand (with a limit).
+
+## Backend
+Backend will provide a single endpoint to retrieve quotes (or error)
+
+```
+/prices
+```
+
+Response will be of type:
+
+```js
+{
+  ts: number
+  au: number
+  ag: number
+  pt: number
+  status: number
+}
+``` 
+
+To get the prices, the backend will periodically call the gold api (see below) to retrieve an updated price.
+
+## Gold API
+### Get Quotes
 Using goldapi.io to get metal spot prices call `https://www.goldapi.io/api/XAU/USD`
 
 Where:
@@ -9,7 +34,7 @@ Where:
 
 And, 'USD' is for the currency, for this widget, USD will be used.
 
-### Javascript
+#### Javascript
 ```js
 var myHeaders = new Headers();
 myHeaders.append("x-access-token", "<token>");
@@ -28,11 +53,12 @@ fetch("https://www.goldapi.io/api/XAU/USD", requestOptions)
 ```
 
 
-### Curl
-```bashcurl -X GET 'https://www.goldapi.io/api/XAU/USD' -H 'x-access-token: <token>'
+#### Curl
+```bash
+curl -X GET 'https://www.goldapi.io/api/XAU/USD' -H 'x-access-token: <token>'
 ```
 
-### Response 
+#### Response 
 
 ```js
 {
@@ -62,11 +88,11 @@ fetch("https://www.goldapi.io/api/XAU/USD", requestOptions)
 }
 ```
 
-## Check usage stats
+### Check usage stats
 
 Call `https://www.goldapi.io/api/stat`
 
-### Javascript
+#### Javascript
 ```js
 var myHeaders = new Headers();
 myHeaders.append("x-access-token", "<token>");
@@ -85,12 +111,12 @@ fetch("https://www.goldapi.io/api/stat", requestOptions)
 ```
 
 
-### Curl
+#### Curl
 ```bash
 curl -X GET 'https://www.goldapi.io/api/stat' -H 'x-access-token: <token>'
 ```
 
-### Response 
+#### Response 
 
 ```js
 {
@@ -99,4 +125,10 @@ curl -X GET 'https://www.goldapi.io/api/stat' -H 'x-access-token: <token>'
   "requests_month": 1,
   "requests_last_month": 1
 }
+```
+
+# Putting token in env for local usage
+
+```bash
+export AU_API_TOKEN=$(more app.env)
 ```

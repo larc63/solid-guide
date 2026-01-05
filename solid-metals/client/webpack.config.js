@@ -12,7 +12,7 @@ module.exports = {
     clean: true
   },
   devServer: {
-    port: 6301,
+    port: 6303,
     hot: true,
     open: true,
     historyApiFallback: true,
