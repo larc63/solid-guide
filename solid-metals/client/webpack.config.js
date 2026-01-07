@@ -12,7 +12,7 @@ module.exports = {
     clean: true
   },
   devServer: {
-    port: 6303,
+    port: 6302,
     hot: true,
     open: true,
     historyApiFallback: true,
@@ -50,8 +50,8 @@ module.exports = {
       template: './index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'todo',
-      filename: 'todo/remoteEntry.js',
+      name: 'metals',
+      filename: 'metals/remoteEntry.js',
       exposes: {
         './Metals': './src/Metals.tsx',
       },

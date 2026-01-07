@@ -1,6 +1,6 @@
 ARG NODE_VERSION=24.7.0-alpine
 ARG NGINX_VERSION=alpine3.22
-ARG PORT=6300
+ARG PORT=6302
 # ============================================
 # Stage 1: Base - Common dependencies
 # ============================================

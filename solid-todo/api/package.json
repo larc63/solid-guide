@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "cross-env PORT=6299 nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
     "cors": "^2.8.5",
+    "cross-env": "^10.1.0",
     "debug": "~4.4.3",
     "express": "~5.1.0",
     "http-errors": "~2.0.1",

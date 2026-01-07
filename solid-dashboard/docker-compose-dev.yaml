@@ -15,6 +15,7 @@ services:
       - NODE_ENV=development
     depends_on:
       - todo_client
+      - metals_client
     entrypoint:
       - npm
       - run
@@ -65,6 +66,47 @@ services:
     networks:
       - frontend
       - todo-back-end
+    entrypoint:
+      - npm
+      - run
+      - start
+  metals_client:
+    image: metals_client
+    tty: true
+    build:
+      context: ../solid-metals/client
+      dockerfile: ./Dockerfile
+      target: development
+    volumes:
+      - ../solid-metals/client/src:/app/src
+    ports:
+      - "6302:6302"
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - metals_api
+    networks:
+      - frontend
+    entrypoint:
+      - npm
+      - run
+      - dev
+  metals_api:
+    image: metals_api
+    tty: true
+    build:
+      context: ../solid-metals/api
+      dockerfile: ./Dockerfile
+      target: development
+    ports:
+      - "6298:6298"
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      - PORT=6298
+    env_file:
+      - ../solid-metals/api/app.env
     entrypoint:
       - npm
       - run

@@ -1,3 +1,3 @@
 (function() {
-    window.TODO_API_HOST = "http://localhost:3000"
+    window.TODO_API_HOST = "http://localhost:6299"
 })();

@@ -48,3 +48,22 @@ services:
       - npm
       - run
       - start
+  metals_api:
+    image: metals_api
+    tty: true
+    build:
+      context: ../solid-metals/api
+      dockerfile: ./Dockerfile
+      target: runner
+    ports:
+      - "6298:6298"
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      - PORT=6298
+    env_file:
+      - ../solid-metals/api/app.env
+    entrypoint:
+      - npm
+      - run
+      - start
