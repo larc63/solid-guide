@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Metals from 'metals/Metals'
 import './Header.css'
 
 class Header extends Component {
@@ -9,9 +10,9 @@ class Header extends Component {
     render() {
         return (
             <div className="headerContents">
-            <div>Widget coming soon!</div>
-            <div>Widget coming soon!</div>
-            <div>Widget coming soon!</div>
+                <div className="widget"><Metals /></div>
+                <div className="widget">Widget coming soon!</div>
+                <div className="widget">Widget coming soon!</div>
             </div>
         )
     }
