@@ -28,13 +28,15 @@ const callGoldAPI = (metal) => {
         fetch(`https://www.goldapi.io/api/${metal}/USD`, requestOptions)
             .then(response => {
                 console.log(`${metal} response status = ${response.status}`);
+                if(response.status != 200) {
+                    throw new Error(`${metal} response status = ${response.status}`);
+                }
                 return response.json()
             })
             .then(result => {
                 return resolve(result.price)
             })
             .catch(error => {
-                console.log(`${metal} result: ${result}`);
                 console.error(error);
                 return reject('error', error)
             });
@@ -48,16 +50,20 @@ const updateQuotes = async () => {
         'XPT'
     ];
     const tasks = metalCodes.map(m => callGoldAPI(m));
-    const results = await Promise.all(tasks);
-    console.log(`results = ${results.map(m => `${m}, `)}`);
-    globalData.unshift({
-        ts: Date.now(),
-        au: results[0],
-        ag: results[1],
-        pt: results[2],
-        status: 0
-    });
-    fs.writeFileSync(DATA_FILE, JSON.stringify(globalData), 'utf-8');
+    try {
+        const results = await Promise.all(tasks);
+        console.log(`results = ${results.map(m => `${m}, `)}`);
+        globalData.unshift({
+            ts: Date.now(),
+            au: results[0],
+            ag: results[1],
+            pt: results[2],
+            status: 0
+        });
+        fs.writeFileSync(DATA_FILE, JSON.stringify(globalData), 'utf-8');
+    } catch (error) {
+        console.error(error.message);
+    }
 }
 
 const getLatestFromFile = () => {
