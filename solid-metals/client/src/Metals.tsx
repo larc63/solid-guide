@@ -25,7 +25,7 @@ export default function Metals() {
         return formattedDateIntl;
     }
     return (
-        <div className="container">
+        <div className="metalscontainer">
             <div className="quotecontainer">
                 <div className="item">Gold</div>
                 <div className="item">{isLoading ? '-' : formatCurrency(quote.au)}</div>

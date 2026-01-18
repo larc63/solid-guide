@@ -10,11 +10,11 @@ export interface Quote {
 
 export const useFetchQuote = () => {
   const [quote, setQuote] = useState<Quote>({
-    ts: 1767564184709,
-    au: 1,
-    ag: 1,
-    pt: 1,
-    status: 0
+    "ts": 1767574443986,
+    "au": 4392.33,
+    "ag": 75.3735,
+    "pt": 2250.035,
+    "status": 0
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);

@@ -1,4 +1,4 @@
-.container {
+.metalscontainer {
     height: 100vh;
     max-height: 80px;
 }
@@ -9,7 +9,6 @@
     grid-template-rows: 1fr 1fr 1fr;
     gap: 5px;
     height: 100%;
-    max-height: 60px;
 }
 
 /* Optional: Basic styling for the grid items */
