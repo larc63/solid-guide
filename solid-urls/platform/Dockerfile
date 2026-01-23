@@ -23,7 +23,7 @@ COPY start.sh .
 EXPOSE 8080
 
 # RUN ./gradlew build --warning-mode all  && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar
-ENTRYPOINT ["./start.sh"]
+RUN ./gradlew build
 
 # ============================================
 # Stage 3: Test - Run unit tests
