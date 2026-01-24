@@ -1,0 +1,287 @@
+[
+    {
+        "section": "Frontend Development & Architecture",
+        "tiles": [
+            {
+                "title": "Single Page Applications",
+                "descriptions": [
+                    "Architected and led development of multiple production SPAs using TypeScript and Angular, serving 3.5 million+ users globally across education platforms.",
+                    "Defined component-based design patterns and responsive layouts ensuring cross-browser and cross-platform compatibility on desktop, tablet, and mobile devices.",
+                    "Established front-end architecture standards across multiple teams, driving adoption of TypeScript, component patterns, and design principles that prioritize usability."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/ti84plusce_online_calculator.png",
+                        "description": "The TI-84 Plus CE online calculator provides an emulator for the TI-84 Plus CE calculator.",
+                        "alt": "Screenshot of the landing page for the TI-84 Plus CE online calculator",
+                        "url": "https://84plusce.ti.com/"
+                    },
+                    {
+                        "path": "assets/images/tinspireconnect.png",
+                        "description": "The TI Nspire Connect web application provides users with the ability to send and receive files from their Nspire CX-II calculators as well as updating their calculator OS.",
+                        "alt": "Picture of a laptop showing nspire connect and connected over usb to a ti graphing calculator",
+                        "url": "https://nspireconnect.ti.com/"
+                    }
+                ]
+            },
+            {
+                "title": "License Activation Center",
+                "descriptions": [
+                    "Designed and implemented full-stack license activation portal with Angular frontend, RESTful middleware (Java/Spring Boot), and Oracle database backend.",
+                    "Implemented OAuth single-sign-on authentication and third-party (10duke) entitlement validation, enabling seamless user onboarding for thousands of users.",
+                    "Owned complete development lifecycle from requirements translation to production deployment, managing Scrum execution and cross-functional coordination."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/lac.png",
+                        "description": "License Activation Center allows users to configure and activate their purchased-or-otherwise-obtained product licenses",
+                        "alt": "Screenshot of TI's license activation center web app",
+                        "url": "https://activation.ti.com/"
+                    }
+                ]
+            },
+            {
+                "title": "Build System Optimization",
+                "descriptions": [
+                    "Reduced build times by 70% through Jenkins parallelization and gulp workflow optimization, dramatically improving developer productivity and CI/CD efficiency.",
+                    "Developed gulp.js build scripts that seamlessly integrated disparate platform build tools (CMake, MSBuild), keeping deployment flexibility on the development team's side.",
+                    "Actively managed task division across parallel gulp tasks to sustain peak performance and prevent bottlenecks."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/jenkins.png",
+                        "description": "Jenkins provides development teams with continuous integration tasks. This was used on various projects, including one where efficiencies were accomplished by using parallel builds with multiple nodes.",
+                        "alt": "Jenkins logo",
+                        "url": "#"
+                    },
+                    {
+                        "path": "assets/images/gulp.png",
+                        "description": "Gulp.js is a javascript task manager used for build scripts.",
+                        "alt": "gulp.js logo and sample code in an IDE",
+                        "url": "#"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Hardware Emulation & Cross-Platform Integration",
+        "tiles": [
+            {
+                "title": "Calculator Emulators",
+                "descriptions": [
+                    "Built high-performance calculator emulators for the browser, implementing Z80, eZ80, Toshiba T4, and Lapis MCU architectures in pure JavaScript and TypeScript for maximum compatibility.",
+                    "Architected the TI-84 Plus CE emulator as a reusable component integrated across multiple environments: Java web views, Electron, Chrome App, and standalone SPAs, requiring extensive performance optimization for constrained browsers.",
+                    "Ported emulators used by millions of students in exam settings (ACT, SAT, AP exams) with zero reported issues during 800k+ user pilots on first release."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/examcalc.png",
+                        "description": "TI's ExamCalc set of products provides testing agencies with calculator emulators",
+                        "alt": "Screenshot of Texas Instruments' ExamCalc product page",
+                        "url": "https://education.ti.com/en/product-resources/examcalc-software"
+                    },
+                    {
+                        "path": "assets/images/examcalcs.png",
+                        "description": "At the time of this writing, Examcalcs provide emulators for one 4-function, 2 scientific and 3 graphing calculators",
+                        "alt": "Group of calculators provided by the examcalcs product line",
+                        "url": "https://education.ti.com/en/product-resources/examcalc-software"
+                    }
+                ]
+            },
+            {
+                "title": "WebAssembly & Cross-Compilation",
+                "descriptions": [
+                    "Led WebAssembly adoption for calculator platform, cross-compiling C/C++ code to run natively in the browser via Emscripten.",
+                    "Adapted CUnit testing to be run as WebAssembly on Node.js in parallel with it's Windows executable to ensure cross-platform support during feature implementation.",
+                    "Designed and implemented JavaScript/C glue layers that enabled seamless interop between web frontends and compiled embedded libraries.",
+                    "Integrated WebUSB and WebSerial APIs, enabling direct browser-to-calculator communication without requiring native drivers or plugins—a critical feature for exam and educational deployments."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/webassembly.png",
+                        "description": "WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine supported on most browsers and Node.js",
+                        "alt": "WebAssembly logo",
+                        "url": "#"
+                    },
+                    {
+                        "path": "assets/images/emscripten.jpeg",
+                        "description": "Emscripten is a C/C++ compiler toolchain that allows compiling to WebAssembly",
+                        "alt": "Emscripten logo",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Device Communications",
+                "descriptions": [
+                    "Designed cross-platform USB communication architecture using abstraction layers and Java Native Interface (JNI), delivering compatibility across Windows and macOS in support of TI-Connect CE",
+                    "Ported proprietary CARS communication protocol to generate platform-native libraries, enabling consistent behavior across desktop applications and web environments.",
+                    "Implemented JavaScript glue code to enable the cross-compiled proprietary NavNet communications library to work via WebUSB",
+                    "Implemented WebSocket-driven automation layer for browser-based calculator emulation, enabling seamless integration with test frameworks and allowing identical APIs between physical devices and emulated calculators."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/ticonnect.png",
+                        "description": "TI-Connect CE is a desktop application that enables usb communications with TI Calculators, supporting file transfer, OS updates and screen capture capabilities.",
+                        "alt": "Screenshot of the TI-Connect CE desktop application",
+                        "url": "https://education.ti.com/en/products/computer-software/ti-connect-ce-sw"
+                    },
+                    {
+                        "path": "assets/images/studentconnect.png",
+                        "description": "TI-Connect CE for Chrome OS is a chromeapp that enables usb communications with TI Calculators, supporting file transfer and screen capture capabilities.",
+                        "alt": "Screenshot of the TI-Connect CE for Chrome OS application",
+                        "url": "https://education.ti.com/en/products/computer-software/ti-connect-ce-sw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Accessibility & User-Centered Design",
+        "tiles": [
+            {
+                "title": "Screen Reader Support",
+                "descriptions": [
+                    "Implemented screen reader support across Z80 assembly and JavaScript layers, enabling vision-impaired students to interact with calculator emulators. Designed innovative notification mechanism where calculator assembly code generates accessibility events that JavaScript interprets as aria-live announcements, solving a unique challenge in emulator accessibility.",
+                    "Extended accessibility to scientific calculators by implementing OCR algorithms to translate screen contents into voiceable text for screen readers."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/ce.png",
+                        "description": "In an iteration of the TI-84 Plus CE code was added to enable changes in the calculator's state to be announced by screen reader software.",
+                        "alt": "Picture of a TI-84 Plus CE calculator",
+                        "url": "https://education.ti.com/en/product-resources/examcalc-software"
+                    }
+                ]
+            },
+            {
+                "title": "User Experience & Responsiveness",
+                "descriptions": [
+                    "Partnered closely with product management and UX designers to translate complex technical constraints into intuitive, user-centric interfaces.",
+                    "Designed responsive layouts specifically optimized for Chromebooks and tablets, ensuring usable experiences across diverse device types and screen sizes.",
+                    "Implemented UI features like screen capture, file transfer, and graph animation to enhance educational value and user engagement."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/tinspireconnect.png",
+                        "description": "Npsire Connect is one of the examples where the UX was simplified to allow for guided workflows",
+                        "alt": "Picture of a laptop showing nspire connect and connected over usb to a ti graphing calculator",
+                        "url": "https://nspireconnect.ti.com/"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Technical Leadership & Team Development",
+        "tiles": [
+            {
+                "title": "Code Quality & Standards",
+                "descriptions": [
+                    "Established mandatory code review culture across multiple teams, raising quality standards through consistent application of testing frameworks (Mocha/Chai/Jasmine/Jest) and static analysis tools.",
+                    "Designed and met code quality metrics using unit tests, code sanitizers, linters, and static analyzers, ensuring maintainability and reducing technical debt.",
+                    "Implemented automated testing infrastructure including WebSocket-driven harness for Robot Framework and Python test reuse, enabling cross-team testing efficiency."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/old_ti.jpg",
+                        "description": "",
+                        "alt": "",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Mentorship & Team Growth",
+                "descriptions": [
+                    "Mentored junior and mid-level engineers through code reviews, technical deep-dives, and hands-on guidance, fostering skill development and team morale.",
+                    "Led development teams in both technical and organizational roles (Development Lead, Scrum Master), coordinating cross-functional alignment between QA, product, and project management.",
+                    "Built strong working relationships with QA, product, and project teams, establishing clear communication channels that enabled faster problem-solving and predictable feature delivery."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/old_ti.jpg",
+                        "description": "",
+                        "alt": "",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Innovation & Risk Mitigation",
+                "descriptions": [
+                    "Accelerated technology adoption by delivering rapid prototypes demonstrating feasibility of emerging tech (WebAssembly, WebUSB, WebSerial), de-risking technical decisions before full team commitment.",
+                    "Coordinated business-wide Tech Sync sessions sharing technical knowledge across organization, improving collective understanding of deep technical topics.",
+                    "Recognized as go-to technical expert for bridging low-level hardware emulation and proprietary communication protocols to modern web platforms, resulting in appointment to Texas Instruments' Technical Ladder."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/old_ti.jpg",
+                        "description": "",
+                        "alt": "",
+                        "url": "#"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Mobile & Game Development",
+        "tiles": [
+            {
+                "title": "iPhone Game Development",
+                "descriptions": [
+                    "Led development of first successful iPhone game prototype for Gameloft (Blockbreaker), establishing the studio's mobile game development capability and leading to expanded project assignments.",
+                    "Ported game title from DirectX to iPhone's OpenGL ES, translating desktop game mechanics to touch and accelerometer input, including awarded title 'Circulate' (Bronze Medal, PocketGamer).",
+                    "Optimized graphics pipelines and reduced polygon counts to maintain 60 FPS performance on resource-limited mobile devices while preserving visual fidelity."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/circulate.png",
+                        "description": "Circulate was a game orignally made for PC that was ported in 2 versions to iPhone, a prologue version that was limited to a single level with no obstacles and a full version that included multiple levels",
+                        "alt": "Screenshot of the circulate proplogue iphone game",
+                        "url": "https://www.pocketgamer.com/circulate/review/"
+                    }
+                ]
+            },
+            {
+                "title": "Cross-Platform Mobile Porting",
+                "descriptions": [
+                    "Led technical efforts porting game titles to resource-constrained carrier devices using Java/J2ME and OpenGL ES, requiring strategic scope reduction and micro-optimizations.",
+                    "Managed Virgin Mobile team responsible for space-constrained device deployments, coordinating asset compression and performance tuning to fit strict memory budgets.",
+                    "Created in-app purchase client module for Qualcomm's Brew framework (C/C++), enabling monetization across multiple game titles and reducing code duplication."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/k10.png",
+                        "description": "The Kyocera K10 was one of the most resource-limited devices in Virgin Mobile's catalog.",
+                        "alt": "Picture of a Kyocera k10",
+                        "url": "#"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "Open Source & Compliance",
+        "tiles": [
+            {
+                "title": "Licensing & Compliance",
+                "descriptions": [
+                    "Responsible for reviewing third-party library eligibility and managing open source licensing across product releases, ensuring EULA compliance and reducing legal risk.",
+                    "Led IT security remediation efforts, coordinating team to address security scan concerns including HTTP header modifications and HTML meta tag additions across web applications.",
+                    "Maintained responsibility for release-cycle open source auditing, protecting company and customers from licensing conflicts."
+                ],
+                "images": [
+                    {
+                        "path": "assets/images/old_ti.jpg",
+                        "description": "",
+                        "alt": "",
+                        "url": "#"
+                    }
+                ]
+            }
+        ]
+    }
+]
