@@ -1,26 +1,19 @@
-<div class="grid-container">
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
-  <div class="grid-item">item</div>
+<div *ngIf="loading()">Loading...</div>
+<div *ngIf="!loading()">
+    <div *ngFor="let s of data">
+        <div class="grid-section">{{ s.section }}</div>
+        <div class="grid-container">
+            <div
+                class="grid-item"
+                [ngStyle]="{ 'background-image': 'url(' + t['images'][0]['path'] + ')' }"
+                *ngFor="let t of s.tiles"
+            >
+                <div class="grid-item-title">
+                    <div>
+                        {{ t['title'] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

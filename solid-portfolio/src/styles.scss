@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: 'Zain';
-    src: url('assets/fonts/Zain-Regular.ttf') format('truetype');
+    src: url('/fonts/Zain-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-h1,
-h2 {
+* {
     font-family: 'Zain', Roboto, Helvetica, Arial, sans-serif;
 }

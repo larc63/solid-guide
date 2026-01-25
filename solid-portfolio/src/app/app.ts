@@ -14,7 +14,7 @@ import { PortFolioData } from './models/portfolio.model';
 })
 export class App {
   protected readonly title = 'portfolio';
-  data!: PortFolioData[];
+  private readonly data!: PortFolioData[];
   showDetails = false;
   
   constructor(private dataService: DataService) {

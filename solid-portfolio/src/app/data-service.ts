@@ -8,19 +8,40 @@ import { PortFolioData } from './models/portfolio.model';
 })
 export class DataService {
     private jsonUrl = '/portfolio_data.json'; // Path is relative to the app's root URL
-    data = signal<Array<PortFolioData>>([]);
-
+    data = signal<PortFolioData[]>([]);
+    dataReady = false;
     constructor(private http: HttpClient) {
+        console.log('loading portfolio data');
         this.loadJsonData();
     }
 
     private loadJsonData(): void {
-        this.getJsonData().subscribe(response => {
-            this.data.set(response);
+        this.getJsonData().subscribe({
+            next: (response) => {
+                this.data.set(response);
+                this.dataReady = true;
+            },
+            error: (error) => {
+                console.error('Error loading portfolio data:', error);
+                this.data.set([]);
+                this.dataReady = true;
+            },
         });
     }
 
     getJsonData(): Observable<any> {
         return this.http.get(this.jsonUrl);
+    }
+
+    getData(): Promise<PortFolioData[]> {
+        return new Promise((resolve, reject) => {
+            let id = setInterval(() => {
+                if (this.dataReady) {
+                    clearInterval(id);
+                    resolve(this.data());
+                    console.log(`loaded ${this.data().length} items`);
+                }
+            }, 10);
+        });
     }
 }
