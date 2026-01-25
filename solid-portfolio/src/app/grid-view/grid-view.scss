@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-item {
+    width: 200px;
+    height: 200px;
+
+    margin: 10px;
+
+    border-radius: 10px;
+    border-style: solid;
+
+    background-color: rgba(255, 0, 0, 0.034);
+}
+
+.grid-item:hover {
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
