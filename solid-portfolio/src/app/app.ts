@@ -1,23 +1,27 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Content } from "./content/content";
+import { Content } from './content/content';
 import { GridView } from './grid-view/grid-view';
 import { DataService } from './data-service';
 import { PortFolioData } from './models/portfolio.model';
 
 @Component({
-  selector: 'app-root',
-  imports: [Content, GridView, RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
-  providers: [DataService]
+    selector: 'app-root',
+    imports: [Content, GridView, RouterOutlet],
+    templateUrl: './app.html',
+    styleUrl: './app.scss',
+    providers: [DataService],
 })
 export class App {
-  protected readonly title = 'portfolio';
-  private readonly data!: PortFolioData[];
-  showDetails = false;
-  
-  constructor(private dataService: DataService) {
-    this.data = this.dataService.data();
-  }
+    protected readonly title = 'portfolio';
+    private readonly data!: PortFolioData[];
+    showDetails = false;
+
+    constructor(private dataService: DataService) {
+        this.data = this.dataService.data();
+    }
+
+    handleTileClick(o: number[]): void {
+        console.log(`Received event for  ${o[0]}, ${o[1]}:`);
+    }
 }

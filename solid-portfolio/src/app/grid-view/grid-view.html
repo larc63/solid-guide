@@ -1,19 +1,21 @@
 <div *ngIf="loading()">Loading...</div>
 <div *ngIf="!loading()">
-    <div *ngFor="let s of data">
+    @for (s of data; track s; let i = $index) {
         <div class="grid-section">{{ s.section }}</div>
         <div class="grid-container">
-            <div
-                class="grid-item"
-                [ngStyle]="{ 'background-image': 'url(' + t['images'][0]['path'] + ')' }"
-                *ngFor="let t of s.tiles"
-            >
-                <div class="grid-item-title">
-                    <div>
-                        {{ t['title'] }}
+            @for (t of s.tiles; track t; let j = $index) {
+                <div
+                    class="grid-item"
+                    (click)="onItemClick(i, j)"
+                    [ngStyle]="{ 'background-image': 'url(' + t['images'][0]['path'] + ')' }"
+                >
+                    <div class="grid-item-title">
+                        <div>
+                            {{ t['title'] }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
-    </div>
+    }
 </div>
