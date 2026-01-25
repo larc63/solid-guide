@@ -1,14 +1,23 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Content } from "./content/content";
 import { GridView } from './grid-view/grid-view';
+import { DataService } from './data-service';
+import { PortFolioData } from './models/portfolio.model';
 
 @Component({
   selector: 'app-root',
   imports: [Content, GridView, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  providers: [DataService]
 })
 export class App {
-  protected readonly title = signal('portfolio');
+  protected readonly title = 'portfolio';
+  data!: PortFolioData[];
+  showDetails = false;
+  
+  constructor(private dataService: DataService) {
+    this.data = this.dataService.data();
+  }
 }
