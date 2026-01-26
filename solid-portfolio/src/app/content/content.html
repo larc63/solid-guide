@@ -2,8 +2,8 @@
 <div *ngIf="!loading()">
     <div class="content">
         <div class="left-side">
-            <h2>{{ data[idx[0]].tiles[idx[1]].title }}</h2>
-            @for (i of data[idx[0]].tiles[idx[1]].images; track i) {
+            <h2>{{ data[sIndex()].tiles[tIndex()].title }}</h2>
+            @for (i of data[sIndex()].tiles[tIndex()].images; track i) {
                 <div class="image">
                     <img src="{{ i.path }}" alt="" srcset="" />
                     <p>{{ i.description }}</p>
@@ -12,9 +12,10 @@
         </div>
         <div class="divider" role="separator" aria-label="Divider"></div>
         <div class="right-side">
-            <h1>{{ data[idx[0]].section }}</h1>
-            <h2>{{ data[idx[0]].tiles[idx[1]].title }}</h2>
-            @for (d of data[idx[0]].tiles[idx[1]].descriptions; track d) {
+            <app-navigation (clickEvent)="handleArrowClick($event)"></app-navigation>
+            <h1>{{ data[sIndex()].section }}</h1>
+            <h2>{{ data[sIndex()].tiles[tIndex()].title }}</h2>
+            @for (d of data[sIndex()].tiles[tIndex()].descriptions; track d) {
                 <p>{{ d }}</p>
             }
         </div>

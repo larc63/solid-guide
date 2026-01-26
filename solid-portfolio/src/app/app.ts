@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Content } from './content/content';
 import { GridView } from './grid-view/grid-view';
-import { DataService } from './data-service';
+import { DataService } from './services/data-service';
 import { PortFolioData } from './models/portfolio.model';
-import { ModalService } from './modal-service';
+import { ModalService } from './services/modal-service';
 
 @Component({
     selector: 'app-root',
-    imports: [Content, GridView, RouterOutlet],
+    imports: [GridView, RouterOutlet],
     templateUrl: './app.html',
     styleUrl: './app.scss',
     providers: [DataService],

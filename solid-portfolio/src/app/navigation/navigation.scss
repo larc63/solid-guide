@@ -1,0 +1,31 @@
+.navigation-container {
+    display: flex;
+    width: max-content;
+    height: 1.5em;
+
+    font-size: 44px;
+
+    background-color: #eee;
+    color: black;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.nav-button:hover {
+    animation: wiggle 0.3s infinite;
+}
+
+@keyframes wiggle {
+    from {
+        transform: rotate(-3deg);
+    }
+    to {
+        transform: rotate(3deg);
+    }
+}

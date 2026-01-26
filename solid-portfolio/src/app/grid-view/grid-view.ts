@@ -1,5 +1,5 @@
 import { Component, OnInit, OutputEmitterRef, signal, output } from '@angular/core';
-import { DataService } from '../data-service';
+import { DataService } from '../services/data-service';
 import { PortFolioData } from '../models/portfolio.model';
 import { CommonModule } from '@angular/common';
 
