@@ -22,10 +22,10 @@
 }
 
 @keyframes wiggle {
-    from {
+    0%, 100% {
         transform: rotate(-3deg);
     }
-    to {
+    50% {
         transform: rotate(3deg);
     }
 }

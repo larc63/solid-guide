@@ -5,10 +5,11 @@ import { GridView } from './grid-view/grid-view';
 import { DataService } from './services/data-service';
 import { PortFolioData } from './models/portfolio.model';
 import { ModalService } from './services/modal-service';
+import { Footer } from './footer/footer';
 
 @Component({
     selector: 'app-root',
-    imports: [GridView, RouterOutlet],
+    imports: [GridView, RouterOutlet, Footer],
     templateUrl: './app.html',
     styleUrl: './app.scss',
     providers: [DataService],

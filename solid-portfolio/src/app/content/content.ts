@@ -9,7 +9,7 @@ import { OverlayRef } from '@angular/cdk/overlay';
     selector: 'app-content',
     imports: [CommonModule, Navigation],
     templateUrl: './content.html',
-    styleUrl: './content.scss',
+    styleUrl: './content.scss'
 })
 export class Content {
     protected data!: PortFolioData[];
@@ -39,7 +39,7 @@ export class Content {
     goLeft() {
         // check if first tile of section
         if (this.tIndex() <= 0) {
-            this.sIndex.set((this.sIndex() - 1) < 0 ? this.data.length - 1 : this.sIndex() - 1);
+            this.sIndex.set(this.sIndex() - 1 < 0 ? this.data.length - 1 : this.sIndex() - 1);
             this.tIndex.set(this.data[this.sIndex()].tiles.length - 1);
         } else {
             this.tIndex.set(this.tIndex() - 1);

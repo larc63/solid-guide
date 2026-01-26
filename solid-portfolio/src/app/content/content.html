@@ -1,5 +1,5 @@
 <div *ngIf="loading()">Loading...</div>
-<div *ngIf="!loading()">
+<div *ngIf="!loading()" animate.enter="appear">
     <div class="content">
         <div class="left-side">
             <h2>{{ data[sIndex()].tiles[tIndex()].title }}</h2>

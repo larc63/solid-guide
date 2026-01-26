@@ -31,3 +31,7 @@
     // background: var(--black-to-gray-to-white-to-gray-to-black-gradient);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
+
+.icon-shadow svg {
+    filter: drop-shadow(5px 5px 5px rgba(255, 255, 255, 0.5));
+}
