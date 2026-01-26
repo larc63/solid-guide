@@ -1,3 +1,5 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: 'Zain';
@@ -6,7 +8,26 @@
     font-style: normal;
 }
 
+:host {
+    --lighter-green: rgba(10, 77, 0, 0.089);
+    --black-to-gray-to-white-to-gray-to-black-gradient: linear-gradient(
+        90deg,
+        lightgray 0%,
+        var(--lighter-green) 2%,
+        var(--lighter-green) 97%,
+        lightgray 100%
+    );
+}
+
 * {
     font-family: 'Zain', Roboto, Helvetica, Arial, sans-serif;
 }
 
+.cdk-overlay-pane {
+    background-color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 20px;
+    // background: var(--black-to-gray-to-white-to-gray-to-black-gradient);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}

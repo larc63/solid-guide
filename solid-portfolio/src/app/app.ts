@@ -4,6 +4,7 @@ import { Content } from './content/content';
 import { GridView } from './grid-view/grid-view';
 import { DataService } from './data-service';
 import { PortFolioData } from './models/portfolio.model';
+import { ModalService } from './modal-service';
 
 @Component({
     selector: 'app-root',
@@ -17,11 +18,12 @@ export class App {
     private readonly data!: PortFolioData[];
     showDetails = false;
 
-    constructor(private dataService: DataService) {
+    constructor(private dataService: DataService, private modalService: ModalService) {
         this.data = this.dataService.data();
     }
 
     handleTileClick(o: number[]): void {
         console.log(`Received event for  ${o[0]}, ${o[1]}:`);
+        this.modalService.open(Content, o);
     }
 }

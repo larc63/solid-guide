@@ -1,3 +1,22 @@
-<div class="left-side">Left side</div>
-<div class="divider" role="separator" aria-label="Divider"></div>
-<div class="right-side">Right Side</div>
+<div *ngIf="loading()">Loading...</div>
+<div *ngIf="!loading()">
+    <div class="content">
+        <div class="left-side">
+            <h2>{{ data[idx[0]].tiles[idx[1]].title }}</h2>
+            @for (i of data[idx[0]].tiles[idx[1]].images; track i) {
+                <div class="image">
+                    <img src="{{ i.path }}" alt="" srcset="" />
+                    <p>{{ i.description }}</p>
+                </div>
+            }
+        </div>
+        <div class="divider" role="separator" aria-label="Divider"></div>
+        <div class="right-side">
+            <h1>{{ data[idx[0]].section }}</h1>
+            <h2>{{ data[idx[0]].tiles[idx[1]].title }}</h2>
+            @for (d of data[idx[0]].tiles[idx[1]].descriptions; track d) {
+                <p>{{ d }}</p>
+            }
+        </div>
+    </div>
+</div>

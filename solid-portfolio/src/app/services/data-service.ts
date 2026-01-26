@@ -7,7 +7,7 @@ import { PortFolioData } from './models/portfolio.model';
     providedIn: 'root',
 })
 export class DataService {
-    private jsonUrl = '/portfolio_data.json'; // Path is relative to the app's root URL
+    private jsonUrl = 'portfolio_data.json'; // Path is relative to the app's root URL
     data = signal<PortFolioData[]>([]);
     dataReady = false;
     constructor(private http: HttpClient) {

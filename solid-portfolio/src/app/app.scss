@@ -24,10 +24,9 @@
 }
 
 h1 {
-    font-size: 3.125rem;
+    font-size: 50px;
     font-weight: 500;
     line-height: 100%;
-    letter-spacing: -0.125rem;
     margin: 0;
 }
 
@@ -60,14 +59,31 @@ header {
     width: 100%;
 }
 
-app-content {
-    display: flex;
-    width: 75vw;
-    height: 80vh;
-    margin-top: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background: var(--black-to-gray-to-white-to-gray-to-black-gradient);
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+@media screen and (max-width: 1100px) {
+    /* CSS rules to be applied when the screen width is 1100px or less */
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+
+    main {
+        width: 66%;
+        min-width: 600px;
+    }
 }
 
+@media screen and (max-width: 700px) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+
+    main {
+        width: 66%;
+        min-width: 500px;
+    }
+}
