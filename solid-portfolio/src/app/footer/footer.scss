@@ -8,6 +8,21 @@ p {
     animation-delay: 2s;
 }
 
+.description-top, .description-bottom {
+    position: absolute;
+    color: lightgray;
+    font-size: 18px;
+}
+
+.description-top{
+    right: 43px;
+    top: 53px;
+}
+.description-bottom{
+    right: 30px;
+    bottom: 53px;
+}
+
 @keyframes wiggle {
     0%,
     100% {

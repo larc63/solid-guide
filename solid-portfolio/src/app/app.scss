@@ -85,11 +85,11 @@ app-footer {
     height: var(--footer-diameter);
     border-radius: 50%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    
     transform: translate(calc(0px - (var(--footer-diameter) * 0.3)));
     transition: transform 0.66s ease-in-out;
 
     animation: pulse 3s 2s;
-    // animation: hide 0.5s 5s;
 }
 
 app-footer:hover {
