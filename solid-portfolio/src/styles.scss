@@ -30,6 +30,11 @@
     border-radius: 20px;
     // background: var(--black-to-gray-to-white-to-gray-to-black-gradient);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    min-width: 350px;
+}
+app-content {
+    width: 100%;
+    min-width: 350px;
 }
 
 .icon-shadow svg {
