@@ -12,18 +12,18 @@ COPY build.gradle settings.gradle ./
 
 RUN ./gradlew dependencies
 
+COPY src ./src
 # ============================================
 # Stage 2: Development - Hot reload with devtools
 # ============================================
 FROM base AS development
 
-COPY src ./src
 COPY start.sh .
 
 EXPOSE 8080
 
 # RUN ./gradlew build --warning-mode all  && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar
-RUN ./gradlew build
+# RUN ./gradlew build
 
 # ============================================
 # Stage 3: Test - Run unit tests
@@ -45,15 +45,14 @@ RUN ./gradlew build
 # ============================================
 # Stage 5: Production - Lightweight runtime with Tomcat
 # ============================================
-FROM tomcat:9.0.111-jdk21-corretto-al2
-
+FROM tomcat:10.1.50-jdk21 AS runner
 
 # Copy custom Tomcat configuration
 # COPY tomcat-config/server.xml /usr/local/tomcat/conf/
 # COPY tomcat-config/context.xml /usr/local/tomcat/conf/
 # COPY tomcat-config/web.xml /usr/local/tomcat/conf/
 
-COPY --from=build /app/build/libs/platform-0.0.1.war /usr/local/tomcat/webapps/
+COPY --from=build /app/build/libs/platform.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 

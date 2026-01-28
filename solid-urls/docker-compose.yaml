@@ -1,0 +1,36 @@
+services:
+  root_api_prod:
+    image: root_api_prod
+    tty: true
+  # docker run --rm -it -p 4200:4200 -v ./src:/app/src solid-urls-root_api
+    build:
+      context: ./client/
+      dockerfile: ./Dockerfile
+      target: runner
+    networks:
+      - frontend
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    volumes:
+      - ./client/src:/app/src
+    environment:
+      - NODE_ENV=production
+  read_api_prod:
+    image: api_container_prod
+    tty: true
+    build:
+      context: ./platform/
+      dockerfile: ./Dockerfile
+      target: runner
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./platform/src:/app/src
+    # working_dir: /usr/local/tomcat/bin
+networks:
+  frontend:
+  backend:

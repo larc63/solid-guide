@@ -1,22 +1,25 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  
   private http = inject(HttpClient); // Inject the HttpClient
-  private apiUrl = 'http://localhost:8081/'; // Replace with your API endpoint
 
-  constructor() { }
-  postData(data: any): Observable<any> {
-    const headers = {
-      'Content-Type': 'application/json',
-      'mode': 'cors',
-      'Access-Control-Allow-Origin': 'http://localhost:4200'
-    };
-    // The post method takes the URL, the body, and optional options (like headers)
-    return this.http.post<any>(this.apiUrl, data, { headers });
-  }
+constructor(@Inject(DOCUMENT) private document: Document) { }
+postData(data: any): Observable < any > {
+  const apiUrl = `${this.document.location.protocol}//${this.document.location.hostname}:8081/`;
+  const headers = {
+    'Content-Type': 'application/json',
+    'mode': 'cors',
+    'Access-Control-Allow-Origin': `${this.document.location.protocol}//${this.document.location.hostname}:4200`
+  };
+  // The post method takes the URL, the body, and optional options (like headers)
+  return this.http.post<any>(apiUrl, data, { headers });
+}
 }

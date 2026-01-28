@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class PlatformApplication {
     // Create logger instance
     private static final Logger logger = LoggerFactory.getLogger(PlatformApplication.class);
@@ -109,6 +109,17 @@ public class PlatformApplication {
         
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
 	}
+
+    // @RequestMapping(
+    //     value = "/",
+    //     method = {RequestMethod.GET}
+    // )
+    // public ResponseEntity<?> rootGet() {
+    //     UrlResult info = new UrlResult();
+    //     info.setShort_url("POST /");
+    //     info.setUrl("Use POST / with JSON {\"url\":\"https://example.com\"} to create a short URL. Use GET /{id} to redirect.");
+    //     return ResponseEntity.ok(info);
+    // }
 
 	/**
 	 * GET /{id} - Retrieve the long URL from the provided ID and redirect

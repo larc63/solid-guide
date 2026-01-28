@@ -11,6 +11,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 RUN --mount=type=cache,target=/root/.npm npm ci
+RUN npm i baseline-browser-mapping@latest -D
 
 COPY . . 
 
@@ -23,7 +24,7 @@ FROM base AS development
 
 EXPOSE 4200
 
-ENTRYPOINT ["npm", "run", "start"]
+# ENTRYPOINT ["npm", "run", "start"]
 
 # ============================================
 # Stage 3: Test - Run unit tests
@@ -34,22 +35,24 @@ ENTRYPOINT ["npm", "run", "test"]
 
 
 # ============================================
-# Stage 4: Build - Create production intance
+# Stage 4: Build - Create production instance
 # ============================================
 FROM base AS builder
 
 RUN npm run build
 
 # Deployment phase 
-FROM nginxinc/nginx-unprivileged:${NGINX_VERSION} AS runner
+FROM nginx:trixie-perl AS runner
+# FROM nginxinc/nginx-unprivileged:${NGINX_VERSION} AS runner
 
-USER nginx
+# USER nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --chown=nginx:nginx --from=builder /app/dist/*/browser /usr/share/nginx/html
 
-EXPOSE 8081
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
 
-ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
-CMD ["-g", "daemon off;"]
