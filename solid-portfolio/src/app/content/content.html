@@ -5,7 +5,13 @@
             <h2>{{ data[sIndex()].tiles[tIndex()].title }}</h2>
             @for (i of data[sIndex()].tiles[tIndex()].images; track i) {
                 <div class="image">
-                    <img src="{{ i.path }}" alt="" srcset="" />
+                    <picture>
+                        @for (j of breakpoints; track j; let idx = $index) {
+                            <source media="(max-width: {{j}}px)" srcset="{{i.path}}-{{sizes[idx]}}w.webp" />
+                        }
+                        <source media="(min-width: 1440px)" srcset="{{i.path}}-2048w.webp" />
+                        <img src="{{ i.originalPath }}" alt="{{ i.alt }}" />
+                    </picture>
                     <p>{{ i.description }}</p>
                 </div>
             }

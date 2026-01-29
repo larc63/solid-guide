@@ -11,13 +11,15 @@
                 ],
                 "images": [
                     {
-                        "path": "images/ti84plusce_online_calculator.png",
+                        "path": "images/ti84plusce_online_calculator",
+                        "originalPath": "images/ti84plusce_online_calculator.png",
                         "description": "The TI-84 Plus CE online calculator provides an emulator for the TI-84 Plus CE calculator.",
                         "alt": "Screenshot of the landing page for the TI-84 Plus CE online calculator",
                         "url": "https://84plusce.ti.com/"
                     },
                     {
-                        "path": "images/tinspireconnect.png",
+                        "path": "images/tinspireconnect",
+                        "originalPath": "images/tinspireconnect.png",
                         "description": "The TI Nspire Connect web application provides users with the ability to send and receive files from their Nspire CX-II calculators as well as updating their calculator OS.",
                         "alt": "Picture of a laptop showing nspire connect and connected over usb to a ti graphing calculator",
                         "url": "https://nspireconnect.ti.com/"
@@ -33,7 +35,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/lac.png",
+                        "path": "images/lac",
+                        "originalPath": "images/lac.png",
                         "description": "License Activation Center allows users to configure and activate their purchased-or-otherwise-obtained product licenses",
                         "alt": "Screenshot of TI's license activation center web app",
                         "url": "https://activation.ti.com/"
@@ -49,13 +52,15 @@
                 ],
                 "images": [
                     {
-                        "path": "images/jenkins.png",
+                        "path": "images/jenkins",
+                        "originalPath": "images/jenkins.png",
                         "description": "Jenkins provides development teams with continuous integration tasks. This was used on various projects, including one where efficiencies were accomplished by using parallel builds with multiple nodes.",
                         "alt": "Jenkins logo",
                         "url": "#"
                     },
                     {
-                        "path": "images/gulp.png",
+                        "path": "images/gulp",
+                        "originalPath": "images/gulp.png",
                         "description": "Gulp.js is a javascript task manager used for build scripts.",
                         "alt": "gulp.js logo and sample code in an IDE",
                         "url": "#"
@@ -76,13 +81,15 @@
                 ],
                 "images": [
                     {
-                        "path": "images/examcalc.png",
+                        "path": "images/examcalc",
+                        "originalPath": "images/examcalc.png",
                         "description": "TI's ExamCalc set of products provides testing agencies with calculator emulators",
                         "alt": "Screenshot of Texas Instruments' ExamCalc product page",
                         "url": "https://education.ti.com/en/product-resources/examcalc-software"
                     },
                     {
-                        "path": "images/excamcalcs.png",
+                        "path": "images/excamcalcs",
+                        "originalPath": "images/excamcalcs.png",
                         "description": "At the time of this writing, Examcalcs provide emulators for one 4-function, 2 scientific and 3 graphing calculators",
                         "alt": "Group of calculators provided by the examcalcs product line",
                         "url": "https://education.ti.com/en/product-resources/examcalc-software"
@@ -99,13 +106,15 @@
                 ],
                 "images": [
                     {
-                        "path": "images/webassembly.png",
+                        "path": "images/webassembly",
+                        "originalPath": "images/webassembly.png",
                         "description": "WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine supported on most browsers and Node.js",
                         "alt": "WebAssembly logo",
                         "url": "#"
                     },
                     {
-                        "path": "images/emscripten.jpeg",
+                        "path": "images/emscripten",
+                        "originalPath": "images/emscripten.jpeg",
                         "description": "Emscripten is a C/C++ compiler toolchain that allows compiling to WebAssembly",
                         "alt": "Emscripten logo",
                         "url": "#"
@@ -122,13 +131,15 @@
                 ],
                 "images": [
                     {
-                        "path": "images/ticonnect.png",
+                        "path": "images/ticonnect",
+                        "originalPath": "images/ticonnect.png",
                         "description": "TI-Connect CE is a desktop application that enables usb communications with TI Calculators, supporting file transfer, OS updates and screen capture capabilities.",
                         "alt": "Screenshot of the TI-Connect CE desktop application",
                         "url": "https://education.ti.com/en/products/computer-software/ti-connect-ce-sw"
                     },
                     {
-                        "path": "images/studentconnect.png",
+                        "path": "images/studentconnect",
+                        "originalPath": "images/studentconnect.png",
                         "description": "TI-Connect CE for Chrome OS is a chromeapp that enables usb communications with TI Calculators, supporting file transfer and screen capture capabilities.",
                         "alt": "Screenshot of the TI-Connect CE for Chrome OS application",
                         "url": "https://education.ti.com/en/products/computer-software/ti-connect-ce-sw"
@@ -148,7 +159,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/ce.png",
+                        "path": "images/ce",
+                        "originalPath": "images/ce.png",
                         "description": "In an iteration of the TI-84 Plus CE code was added to enable changes in the calculator's state to be announced by screen reader software.",
                         "alt": "Picture of a TI-84 Plus CE calculator",
                         "url": "https://education.ti.com/en/product-resources/examcalc-software"
@@ -164,7 +176,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/tinspireconnect.png",
+                        "path": "images/tinspireconnect",
+                        "originalPath": "images/tinspireconnect.png",
                         "description": "Npsire Connect is one of the examples where the UX was simplified to allow for guided workflows",
                         "alt": "Picture of a laptop showing nspire connect and connected over usb to a ti graphing calculator",
                         "url": "https://nspireconnect.ti.com/"
@@ -185,7 +198,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/old_ti.jpg",
+                        "path": "images/old_ti",
+                        "originalPath": "images/old_ti.jpg",
                         "description": "",
                         "alt": "",
                         "url": "#"
@@ -201,7 +215,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/old_ti.jpg",
+                        "path": "images/old_ti",
+                        "originalPath": "images/old_ti.jpg",
                         "description": "",
                         "alt": "",
                         "url": "#"
@@ -217,7 +232,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/old_ti.jpg",
+                        "path": "images/old_ti",
+                        "originalPath": "images/old_ti.jpg",
                         "description": "",
                         "alt": "",
                         "url": "#"
@@ -238,7 +254,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/circulate.png",
+                        "path": "images/circulate",
+                        "originalPath": "images/circulate.png",
                         "description": "Circulate was a game orignally made for PC that was ported in 2 versions to iPhone, a prologue version that was limited to a single level with no obstacles and a full version that included multiple levels",
                         "alt": "Screenshot of the circulate proplogue iphone game",
                         "url": "https://www.pocketgamer.com/circulate/review/"
@@ -254,7 +271,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/k10.png",
+                        "path": "images/k10",
+                        "originalPath": "images/k10.png",
                         "description": "The Kyocera K10 was one of the most resource-limited devices in Virgin Mobile's catalog.",
                         "alt": "Picture of a Kyocera k10",
                         "url": "#"
@@ -275,7 +293,8 @@
                 ],
                 "images": [
                     {
-                        "path": "images/old_ti.jpg",
+                        "path": "images/old_ti",
+                        "originalPath": "images/old_ti.jpg",
                         "description": "",
                         "alt": "",
                         "url": "#"

@@ -30,7 +30,7 @@ export class DataService {
     }
 
     getJsonData(): Observable<any> {
-        return this.http.get(this.jsonUrl);
+        return this.http.get(this.jsonUrl, {priority: 'high'});
     }
 
     getData(): Promise<PortFolioData[]> {

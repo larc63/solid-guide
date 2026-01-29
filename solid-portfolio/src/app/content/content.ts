@@ -12,13 +12,15 @@ import { OverlayRef } from '@angular/cdk/overlay';
     styleUrl: './content.scss'
 })
 export class Content {
+    readonly sizes = [450, 525, 1024, 1600];
+    readonly breakpoints = [500, 700, 1100, 1440];
     protected data!: PortFolioData[];
     loading = signal(true);
     sIndex = model(0);
     tIndex = model(0);
     parentRef!: OverlayRef;
 
-    constructor(private dataService: DataService) {}
+    constructor(private dataService: DataService) { }
 
     async ngOnInit(): Promise<void> {
         // Initialize component

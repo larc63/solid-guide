@@ -7,7 +7,9 @@
                 <div
                     class="grid-item"
                     (click)="onItemClick(i, j)"
-                    [ngStyle]="{ 'background-image': 'url(' + t['images'][0]['path'] + ')' }"
+                    [ngStyle]="{
+                        'background-image': 'url(' + t['images'][0]['path'] + '-300w.webp)',
+                    }"
                 >
                     <div class="grid-item-title">
                         <div>

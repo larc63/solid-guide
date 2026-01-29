@@ -1,5 +1,6 @@
 export interface PortfolioImage {
   path: string,
+  originalPath: string,
   description: string,
   alt: string,
   url: string
