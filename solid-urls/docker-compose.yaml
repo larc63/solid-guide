@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  urls_client_prod:
+    image: root_api_prod
+    container_name: urls_client_prod
+    networks:
+      - frontend
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+  urls_api_prod:
+    image: api_container_prod
+    container_name: urls_api_prod
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+networks:
+  frontend:
+  backend:
