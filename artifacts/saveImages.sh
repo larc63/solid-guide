@@ -1,6 +1,6 @@
 
 # images=(root_api_prod api_container_prod)
-images=(root_api api_container_prod)
+images=(root_api_prod api_container_prod)
 for name in "${images[@]}"; do
   # Figure out which reference to save
   ref=""
