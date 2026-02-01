@@ -31,7 +31,6 @@ CMD ["ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]
 ## 2. docker-compose.yml
 
 ```yaml
-version: '3.8'
 
 services:
   angular-app:
@@ -90,7 +89,6 @@ docker-compose exec angular-app npm install package-name
 ## 5. Alternative: Simpler docker-compose.yml (No Dockerfile)
 
 ```yaml
-version: '3.8'
 
 services:
   angular-app:
@@ -110,7 +108,6 @@ services:
 ## 6. Enhanced docker-compose.yml (with hot reload optimization)
 
 ```yaml
-version: '3.8'
 
 services:
   angular-app:
@@ -175,7 +172,6 @@ CMD ["nginx", "-g", "daemon off;"]
 ## 8. docker-compose for Multi-stage
 
 ```yaml
-version: '3.8'
 
 services:
   # Development

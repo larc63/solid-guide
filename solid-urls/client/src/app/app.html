@@ -1,5 +1,17 @@
 <div class="container">
+  @if (showError && (url.invalid && (url.dirty || url.touched))) {
+    <div class="error-message">URL is invalid</div>
+  }
+  <div class="error-message">{{ errorMessage() }}</div>
+  @if ((resultMessage() !== '') && (!url.dirty && !url.touched)) {
+    <div class="result-message">
+      {{ resultMessage() }} 
+      <fa-icon [icon]="faCopy" title="Copy to clipboard" (click)="copyToClipboard()" />
+    </div>
+  }
+  <div class="item-container">
     <label for="myurl">Enter URL to shorten</label>
-    <input type="text" [formControl]="url" id="myurl">
-    <button (click)="handleSubmit()">Submit</button>
+    <input type="text" [formControl]="url" id="myurl" />
+    <button (click)="handleSubmit()" [disabled]="url.invalid">Submit</button>
+  </div>
 </div>

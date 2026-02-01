@@ -1,8 +1,25 @@
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 40vh;
   gap: 1rem;
+}
+
+.item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-y: hidden;
+}
+
+.error-message {
+  background-color: lightcoral;
+}
+
+.result-message {
+  border-style: inset;
+  border-width: 1px;
+  padding: 7px;
 }

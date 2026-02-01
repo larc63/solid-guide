@@ -1,19 +1,7 @@
 services:
-  rp:
-    image: haproxy_rp
-    build:
-      context: ./rp/
-      dockerfile: ./Dockerfile
-    networks:
-      - frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - read_api
   root_api:
     image: root_api
     tty: true
-  # docker run --rm -it -p 4200:4200 -v ./src:/app/src solid-urls-root_api
     build:
       context: ./client/
       dockerfile: ./Dockerfile
@@ -27,10 +15,6 @@ services:
       - ./client/src:/app/src
     environment:
       - NODE_ENV=development
-    # entrypoint:
-    #   - npm
-    #   - run
-    #   - start
   read_api:
     image: api_container
     tty: true
