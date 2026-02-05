@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Luis A. Rodriguez\' Portfolio</string>
+    <string name="title_activity_main">Luis A. Rodriguez\' Portfolio</string>
+    <string name="package_name">com.lavacahacemu.portfolio</string>
+    <string name="custom_url_scheme">com.lavacahacemu.portfolio</string>
+</resources>
